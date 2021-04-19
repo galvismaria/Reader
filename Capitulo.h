@@ -1,12 +1,17 @@
 #ifndef CAPITULO
 #define CAPITULO
 
-#include "Palabra.h"
+#include "Hash.h"
 
 using namespace std;
 
 class Capitulo{
 	
+	private:
+	
+		string capitulo;
+		int n;
+		Hash *contenido;
 	
 	
 };

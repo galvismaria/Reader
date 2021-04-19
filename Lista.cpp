@@ -120,6 +120,13 @@ int Lista<T>::cantElementos(){
 }
 
 template <typename T>
+int Lista<T>::getRepeticiones(){
+	
+	return actual->repeticiones;
+	
+}
+
+template <typename T>
 void Lista<T>::imprimir(){
 	
 	Nodo* aux = principio;
