@@ -1,3 +1,6 @@
+#ifndef NODO
+#define NODO
+
 #include "Global.h"
 #include "Palabra.h"
 
@@ -28,3 +31,5 @@ class Nodo{
 		int actualizarAltura();
 	
 };
+
+#endif

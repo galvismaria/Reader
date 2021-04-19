@@ -1,3 +1,6 @@
+#ifndef PALABRA
+#define PALABRA
+
 #include "Global.h"
 
 using namespace std;
@@ -7,22 +10,15 @@ class Palabra{
 	private:
 		
 		string palabra;
-		int capitulo;
-		int linea;
-		int contLinea;
-		int contCapitulo;
-		int altura;
+		Lista<int> paginas;
+		Lista<int> lineas;
 		
 	public:
 		
-		Palabra(){
-		};
-		Palabra( string palabra, int capitulo, int linea );
+		Palabra();
+		Palabra(string palabra, int pagina, int linea);
 		string getPalabra();
-		int getCapitulo();
-		int getLinea();
-		int getContLinea();
-		int getContCapitulo();
-		
-	
+			
 };
+
+#endif

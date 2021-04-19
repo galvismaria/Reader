@@ -326,3 +326,16 @@ void ArbolAVL::setRaiz( Nodo *n ){
 		raiz->quitarPadre();
 	
 }
+
+void ArbolAVL::inOrden( Nodo *nodo, bool r ){
+   if(r) nodo = raiz;
+   if(nodo->getIzquierda()) inOrden(nodo->getIzquierda(), false);
+   cout << nodo->getInfo().getPalabra() << endl;
+   if(nodo->getDerecha()) inOrden(nodo->getDerecha(), false);
+}
+
+void ArbolAVL::imprimirInOrden(){
+	
+	inOrden( raiz, true );
+	
+}

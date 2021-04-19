@@ -1,3 +1,6 @@
+#ifndef ARBOL_AVL
+#define ARBOL_AVL
+
 #include "Global.h"
 #include "Nodo.h"
 
@@ -9,18 +12,22 @@ class ArbolAVL{
 		
 		Nodo *raiz;
 		
-		void balancearEnNodo( Nodo *n );
-		Nodo *encontrarNodo( string palabra );
-		void rotarIzquierda( Nodo *n );
-		void rotarDerecha( Nodo *n );
-		void setRaiz( Nodo *n );
+		void balancearEnNodo(Nodo *n);
+		Nodo *encontrarNodo(string palabra);
+		void rotarIzquierda(Nodo *n);
+		void rotarDerecha(Nodo *n);
+		void setRaiz(Nodo *n);
 		
 	public:
 		
 		ArbolAVL();
-		ArbolAVL( Palabra p );
+		ArbolAVL(Palabra p);
 		int getAltura();
-		bool insertarNodo( Palabra p );
-		bool quitarNodo( string palabra );
+		bool insertarNodo(Palabra p);
+		bool quitarNodo(string palabra);
+		void inOrden(Nodo *nodo, bool r);
+		void imprimirInOrden();
 	
 };
+
+#endifs
