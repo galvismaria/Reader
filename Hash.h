@@ -21,11 +21,13 @@ class Hash{
 		void insertar(Palabra palabra);
 		void insertar(Palabra palabra, int capitulo);
 		
-		void eliminar(string palabra);
-		void eliminar(string palabra, int capitulo);
+		void eliminar(Palabra palabra);
+		void eliminar(Palabra palabra, int capitulo);
 		
-		bool pertenece(string palabra);
-		bool pertenece(string palabra, int capitulo)
+		bool pertenece(Palabra palabra);
+		bool pertenece(Palabra palabra, int capitulo);
+		
+		void imprimir();
 	
 };
 

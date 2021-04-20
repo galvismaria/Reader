@@ -5,7 +5,6 @@ Lista<T>::Lista(){
 	
     principio = actual = nullptr;
     elementos = 0;
-    repeticiones = 0;
     
 }
 
@@ -34,7 +33,7 @@ void Lista<T>::insertar( T info ){
         principio->siguiente = nullptr;
         principio->info = info;
         elementos++;
-        repeticiones++;
+        principio->repeticiones++;
         
     } else if ( buscar( info ) == info ){
     	
@@ -53,13 +52,12 @@ void Lista<T>::insertar( T info ){
     	
 	} else{
     	
-    	
         ultimo();
         actual->siguiente = new Nodo();
         actual->siguiente = actual->siguiente;
         actual->siguiente->info = info;
         elementos++;
-        repeticiones++;
+        actual->repeticiones++;
         
     }
 	
@@ -106,7 +104,7 @@ void Lista<T>::ultimo(){
 }
 
 template <typename T>
-T* Lista<T>::valorActual(){
+T Lista<T>::valorActual(){
 	
     return actual->info;
     
@@ -127,19 +125,6 @@ int Lista<T>::getRepeticiones(){
 }
 
 template <typename T>
-void Lista<T>::imprimir(){
-	
-	Nodo* aux = principio;
-	
-	while ( aux != nullptr ){
-		
-		aux->info->mostrarInfo();
-		aux = aux->siguiente;
-	}
-	
-}
-
-template <typename T>
 T Lista<T>::buscar( T info ){
 	
 	Nodo* aux = principio;
@@ -155,16 +140,14 @@ T Lista<T>::buscar( T info ){
 		aux = aux->siguiente;
 	}
 	
-	return nullptr;
-	
 }
 
 template <typename T>
-void Lista::borrar(T info){
+void Lista<T>::borrar(T info){
 	
     Nodo *ant, *aux;
 
-    aux = princio;
+    aux = principio;
     ant = nullptr;
     
     while ( aux != nullptr && aux->info != info){
@@ -208,3 +191,6 @@ Lista<T>::~Lista(){
 
     actual = NULL;
 }
+
+template class Lista<Palabra>;
+template class Lista<int>;

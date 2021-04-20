@@ -59,6 +59,12 @@ int ArbolAVL::getAltura(){
 	
 }
 
+Nodo *ArbolAVL::getRaiz(){
+	
+	return raiz;
+	
+}
+
 bool ArbolAVL::insertarNodo( Palabra palabra ){
 	
 	if ( raiz == nullptr )
@@ -327,11 +333,19 @@ void ArbolAVL::setRaiz( Nodo *n ){
 	
 }
 
-void ArbolAVL::inOrden( Nodo *nodo, bool r ){
-   if(r) nodo = raiz;
-   if(nodo->getIzquierda()) inOrden(nodo->getIzquierda(), false);
-   cout << nodo->getInfo().getPalabra() << endl;
-   if(nodo->getDerecha()) inOrden(nodo->getDerecha(), false);
+void ArbolAVL::inOrden( Nodo *nodo, bool esRaiz ){
+	
+	if( esRaiz )
+		nodo = raiz;
+		
+	if( nodo->getIzquierda() )
+		inOrden( nodo->getIzquierda(), false );
+   
+	cout << nodo->getInfo().getPalabra() << endl;
+	
+	if( nodo->getDerecha() )
+		inOrden( nodo->getDerecha(), false );
+   
 }
 
 void ArbolAVL::imprimirInOrden(){

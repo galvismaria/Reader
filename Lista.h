@@ -1,8 +1,7 @@
 #ifndef LISTA
 #define LISTA
 
-#include "Curso.h"
-#include "Estudiante.h"
+#include "Palabra.h"
 
 using namespace std;
 
@@ -25,7 +24,7 @@ class Lista{
     		public:
     			
     			T info;					// Dato que se almacena en la lista
-    			int repeticiones;		// Indica cuantas veces se repite el elemento
+    			int repeticiones = 0;		// Indica cuantas veces se repite el elemento
     			Nodo *siguiente;		// Apuntador al siguiente elemento
     		
 		};
