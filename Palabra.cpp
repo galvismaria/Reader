@@ -12,8 +12,17 @@ Palabra::Palabra(){
 Palabra::Palabra( string palabra, int pagina, int linea ){
 	
 	this->palabra = palabra;
-	//paginas->insertar( pagina );
-	//lineas->insertar( linea );
+	paginas = new Lista<int>;
+	paginas->insertar(pagina);
+	lineas = new Lista<int>;
+	lineas->insertar(linea);
+	
+}
+
+Palabra::Palabra(const Palabra &nuevaPalabra){
+	
+	palabra = nuevaPalabra.Palabra;
+	
 	
 }
 
@@ -33,5 +42,16 @@ bool Palabra::operator != (Palabra p) const{
 	
 	return palabra != p.getPalabra();
 	
+}
+
+Palabra& Palabra::operator = (const Palabra &p){
+	
+    if ( this != &p ) {
+        
+        palabra = p.palabra;
+        
+        
+    }
+    return *this;
 }
 

@@ -20,8 +20,8 @@ class Palabra{
 		
 		Palabra();
 		Palabra(string palabra, int pagina, int linea);
+		Palabra(const Palabra &nuevaPalabra);
 		string getPalabra();
-		int getCapitulo();
 		bool operator == (Palabra p) const;
 		bool operator != (Palabra p) const;
 			
