@@ -3,8 +3,8 @@
 Articulo::Articulo(){
 
 	palabras = new ArbolAVL();
-	tablaCapitulos = new Hash();
-	tablaAlfabetica = new Hash();
+	/*tablaCapitulos = new Hash();
+	tablaAlfabetica = new Hash();*/
 
 }
 
@@ -56,6 +56,6 @@ void Articulo::imprimirTablaCapitulos(){
 void Articulo::imprimirTablaAlfabetica(){
 	
 	crearTablaAlfabetica( palabras->getRaiz() , true );
-	tablaAlfabetica->imprimir();
+	//tablaAlfabetica->imprimir();
 	
 }

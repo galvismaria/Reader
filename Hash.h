@@ -1,8 +1,9 @@
 #ifndef HASH
 #define HASH
 
-#include "Lista.h"
 #include "Palabra.h"
+#include <list>
+#include <algorithm>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ class Hash{
 	
 	private:
 		
-		Lista<Palabra> *tabla[MAX_HASH];
+		list<Palabra> *tabla[MAX_HASH];
 		
 		int hashing(string palabra);
 		int hashing(int capitulo);

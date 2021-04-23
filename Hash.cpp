@@ -2,14 +2,18 @@
 
 Hash::Hash(){
 	
-	for ( int i = 0 ; i < MAX_HASH ; i++ )
-		tabla[i] = new Lista<Palabra>;
+	for ( int i = 0 ; i < MAX_HASH ; i++ ){
+		
+		
+		tabla[i] = new list<Palabra>();
+		
+	}
 	
 }
 
 int Hash::hashing( string palabra ){
 	
-	return ( toupper( palabra.at( 0 ) ) - 'A' );
+	return (toupper(palabra.at(0)) - 'A');
 	
 }
 
@@ -21,11 +25,11 @@ int Hash::hashing( int capitulo ){
 
 void Hash::insertar( Palabra palabra ){
 	
-	int hashClave = hashing( palabra.getPalabra() );
+	int hashClave = hashing(palabra.getPalabra());
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-		tabla[hashClave]->insertar(palabra);
+		tabla[hashClave]->push_back( palabra );
 		
 	}
 
@@ -33,11 +37,11 @@ void Hash::insertar( Palabra palabra ){
 
 void Hash::insertar( Palabra palabra, int capitulo ){
 	
-	int hashClave = hashing( capitulo );
+	int hashClave = hashing(capitulo);
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-		tabla[hashClave]->insertar(palabra);
+		tabla[hashClave]->push_back(palabra);
 		
 	}
 	
@@ -45,11 +49,11 @@ void Hash::insertar( Palabra palabra, int capitulo ){
 
 void Hash::eliminar( Palabra palabra ){
 	
-	int hashClave = hashing( palabra.getPalabra() );
+	int hashClave = hashing(palabra.getPalabra());
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-		tabla[hashClave]->borrar( palabra );
+		tabla[hashClave]->remove(palabra);
 		
 	}
 	
@@ -57,11 +61,11 @@ void Hash::eliminar( Palabra palabra ){
 
 void Hash::eliminar( Palabra palabra, int capitulo ){
 	
-	int hashClave = hashing( capitulo );
+	int hashClave = hashing(capitulo);
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-	tabla[hashClave]->borrar( palabra );
+		tabla[hashClave]->remove(palabra);
 		
 	}
 	
@@ -69,13 +73,14 @@ void Hash::eliminar( Palabra palabra, int capitulo ){
 
 bool Hash::pertenece( Palabra palabra ){
 	
-	int hashClave = hashing( palabra.getPalabra() );
+	int hashClave = hashing(palabra.getPalabra());
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-		Palabra temp = tabla[hashClave]->buscar( palabra );
+		list<Palabra>::iterator it;
+		it  = find(tabla[hashClave]->begin(), tabla[hashClave]->end(), palabra);
 		
-		if ( temp.getPalabra() == palabra.getPalabra() ){
+		if ( it != tabla[hashClave]->end() ){
 			
 			return true;
 			
@@ -97,13 +102,14 @@ bool Hash::pertenece( Palabra palabra ){
 
 bool Hash::pertenece( Palabra palabra, int capitulo ){
 	
-	int hashClave = hashing( capitulo );
+	int hashClave = hashing(capitulo);
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-		Palabra temp = tabla[hashClave]->buscar( palabra );
+		list<Palabra>::iterator it;
+		it  = find(tabla[hashClave]->begin(), tabla[hashClave]->end(), palabra);
 		
-		if ( temp.getPalabra() == palabra.getPalabra() ){
+		if ( it != tabla[hashClave]->end() ){
 			
 			return true;
 			
@@ -127,16 +133,16 @@ void Hash::imprimir(){
 	
 	for ( int i = 0 ; i < MAX_HASH ; i++ ){
 		
-		if ( tabla[i]->getRepeticiones() > 0 ){
+		if ( tabla[i]->front().getPalabra() != "\0" ){
 			
-			tabla[i]->primero();
+			list<Palabra>::iterator it;
 			
-			while ( tabla[i]->hayActual() ){
-				
-				cout << "Palabra: " << tabla[i]->valorActual().getPalabra() << " Clave: " << i << endl;
-				
-			}
-						
+			for( it = tabla[i]->begin() ; it != tabla[i]->end() ; ++it )
+			
+				cout << "Palabra: " << it->getPalabra() << " Clave: " << i << endl; 
+        		
+    		cout << '\n';
+			
 		}
 		
 	}
