@@ -1,5 +1,21 @@
 #include "Lista.h"
 
+Lista::Nodo::Nodo(){
+	
+	palabra = new Palabra();
+	repeticiones = 0;
+	siguiente = nullptr;
+	
+}
+
+Lista::Nodo::Nodo( Palabra *p, int r, Nodo *sig ){
+	
+	palabra = p;
+	repeticiones = r;
+	siguiente = sig;
+	
+}
+
 Lista::Lista(){
 	
     principio = actual = nullptr;
@@ -19,42 +35,21 @@ bool Lista::hayActual(){
 	
 }
 
-void Lista::insertar( Palabra *pb ){
-	
-	Nodo* temp;
+void Lista::insertarNodo( Palabra *pb ){
 
-    if ( listaVacia() ){
-    	
-        principio = new Nodo();
-        principio->siguiente = nullptr;
-        principio->palabra = pb;
-        elementos++;
-        principio->repeticiones++;
+    if ( principio == nullptr ){
+    
+		elementos++;
+		principio = new Nodo( pb, elementos, nullptr );
         
-    } else if ( buscar( pb->getPalabra() )->getPalabra() == pb->getPalabra() ){
-    	
-    	temp = principio;
+    }
 	
-		while ( temp != nullptr ){
-		
-			if ( temp->palabra->getPalabra() == pb->getPalabra() ){
-			
-				temp->repeticiones++;
-			
-			}
-		
-			temp = temp->siguiente;
-		}
+	else{
     	
-	} else{
-    	
-        ultimo();
-        actual->siguiente = new Nodo();
-        actual->siguiente = actual->siguiente;
-        actual->siguiente->palabra = pb;
+    	ultimo();
         elementos++;
-        actual->repeticiones++;
-        
+        actual->siguiente = new Nodo( pb, elementos, actual->siguiente );
+            
     }
 	
 }
@@ -85,7 +80,7 @@ void Lista::ultimo(){
     
     if ( !listaVacia() ){
         	
-        while ( actual->siguiente ){
+        while ( actual->siguiente != nullptr ){
         	
         	siguiente();
         	
@@ -163,11 +158,32 @@ void Lista::borrar(string palabra){
     
 }
 
+void Lista::imprimir(){
+	
+	if ( !listaVacia() ){
+		
+		actual = principio;
+	
+		while ( actual != nullptr ){
+		
+			cout << "Palabra: " << actual->palabra->getPalabra() << endl;
+			actual = actual->siguiente;
+		
+		}
+		
+	} else{
+		
+		cout << "Lista vacia" << endl;
+		
+	}
+	
+}
+
 Lista::~Lista(){
 	
     Nodo* aux;
 
-    while ( principio ){
+    while ( principio != nullptr ){
     	
         aux = principio;
         principio = principio->siguiente;

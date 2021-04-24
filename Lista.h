@@ -22,9 +22,12 @@ class Lista{
     		
     		public:
     			
-    			Palabra *palabra = new Palabra();					// Dato que se almacena en la lista
-    			int repeticiones = 0;		// Indica cuantas veces se repite el elemento
-    			Nodo *siguiente = nullptr;		// Apuntador al siguiente elemento
+    			Palabra *palabra;					// Dato que se almacena en la lista
+    			int repeticiones;		// Indica cuantas veces se repite el elemento
+    			Nodo *siguiente;		// Apuntador al siguiente elemento
+    			
+    			Nodo();
+    			Nodo(Palabra *p, int r, Nodo *sig);
     		
 		};
     	
@@ -42,7 +45,7 @@ class Lista{
         
         /* ----- Procedimientos ----- */
         
-        void insertar(Palabra *pb);			// Inserta un elemento en la lista
+        void insertarNodo(Palabra *pb);			// Inserta un elemento en la lista
         
         Palabra* valorActual();				// Retorna el elemento almacenado en el nodo actual de la lista
         

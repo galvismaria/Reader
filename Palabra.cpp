@@ -3,22 +3,16 @@
 Palabra::Palabra(){
 	
 	palabra = "\0";
-	paginas = new list<int>();
-	lineas = new list<int>();
+	paginas = new list<int>;
+	lineas = new list<int>;
 	
 }
 
 Palabra::Palabra( string p ){
 	
 	palabra = p;
-	paginas = new list<int>();
-	lineas = new list<int>();
-	
-}
-
-Palabra::Palabra(const Palabra &nuevaPalabra){
-	
-	palabra = nuevaPalabra.palabra;	
+	paginas = new list<int>;
+	lineas = new list<int>;
 	
 }
 
@@ -54,14 +48,11 @@ bool Palabra::operator != (Palabra p) const{
 }
 
 Palabra& Palabra::operator = (const Palabra &p){
-	
-    if ( this != &p ) {
         
-        palabra = p.palabra;
-        paginas = p.paginas;
-        lineas = p.lineas;
+    this->palabra = p.palabra;
+    this->paginas = p.paginas;
+    this->lineas = p.lineas;
         
-    }
     return *this;
 }
 
