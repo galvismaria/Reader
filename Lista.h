@@ -12,7 +12,6 @@ using namespace std;
 
 */
 
-template <typename T>
 class Lista{
 	
     private:
@@ -23,9 +22,9 @@ class Lista{
     		
     		public:
     			
-    			T info;					// Dato que se almacena en la lista
+    			Palabra *palabra = new Palabra();					// Dato que se almacena en la lista
     			int repeticiones = 0;		// Indica cuantas veces se repite el elemento
-    			Nodo *siguiente;		// Apuntador al siguiente elemento
+    			Nodo *siguiente = nullptr;		// Apuntador al siguiente elemento
     		
 		};
     	
@@ -43,9 +42,9 @@ class Lista{
         
         /* ----- Procedimientos ----- */
         
-        void insertar(T info);			// Inserta un elemento en la lista
+        void insertar(Palabra *pb);			// Inserta un elemento en la lista
         
-        T valorActual();				// Retorna el elemento almacenado en el nodo actual de la lista
+        Palabra* valorActual();				// Retorna el elemento almacenado en el nodo actual de la lista
         
         int cantElementos();			// Devuelve la cantidad de elementos guardados en la lista
         
@@ -65,11 +64,11 @@ class Lista{
         
 		void imprimir();				// Imprime la información guardada en el nodo
 		
-		T buscar(T info);       		// Busca un nodo según el dato que se pase como parámetro
+		Palabra* buscar(string palabra);       		// Busca un nodo según el dato que se pase como parámetro
 										// Si se trata de una lista de estudiantes recibe una cédula como parámetro,
 										// y si se trata de una lista de cursos recibe un ID de materia como parámetro
 										
-		void borrar(T info);
+		void borrar(string palabra);
 
         
         /* ----- Destructor ----- */

@@ -10,9 +10,7 @@ Articulo::Articulo(){
 
 void Articulo::crearArbol( string palabra ){
 	
-	Palabra p(palabra);
-	
-	palabras->insertarNodo( p );
+	palabras->insertarNodo( new Palabra (palabra) );
 	
 }
 
@@ -40,6 +38,7 @@ void Articulo::crearTablaAlfabetica( Nodo *nodo, bool esRaiz ){
 		crearTablaAlfabetica( nodo->getIzquierda(), false );
 	
 	tablaCapitulos->insertar( nodo->getInfo() );
+	cout << nodo->getInfo()->getPalabra() << endl;
 	
 	if ( nodo->getDerecha() )
 		crearTablaAlfabetica( nodo->getDerecha(), false );

@@ -1,29 +1,25 @@
 #include "Lista.h"
 
-template <typename T>
-Lista<T>::Lista(){
+Lista::Lista(){
 	
     principio = actual = nullptr;
     elementos = 0;
     
 }
 
-template <typename T>
-bool Lista<T>::listaVacia(){
+bool Lista::listaVacia(){
 	
     return principio == nullptr;
     
 }
 
-template <typename T>
-bool Lista<T>::hayActual(){
+bool Lista::hayActual(){
 	
 	return actual != nullptr;
 	
 }
 
-template <typename T>
-void Lista<T>::insertar( T info ){
+void Lista::insertar( Palabra *pb ){
 	
 	Nodo* temp;
 
@@ -31,17 +27,17 @@ void Lista<T>::insertar( T info ){
     	
         principio = new Nodo();
         principio->siguiente = nullptr;
-        principio->info = info;
+        principio->palabra = pb;
         elementos++;
         principio->repeticiones++;
         
-    } else if ( buscar( info ) == info ){
+    } else if ( buscar( pb->getPalabra() )->getPalabra() == pb->getPalabra() ){
     	
     	temp = principio;
 	
 		while ( temp != nullptr ){
 		
-			if ( temp->info == info ){
+			if ( temp->palabra->getPalabra() == pb->getPalabra() ){
 			
 				temp->repeticiones++;
 			
@@ -55,7 +51,7 @@ void Lista<T>::insertar( T info ){
         ultimo();
         actual->siguiente = new Nodo();
         actual->siguiente = actual->siguiente;
-        actual->siguiente->info = info;
+        actual->siguiente->palabra = pb;
         elementos++;
         actual->repeticiones++;
         
@@ -63,8 +59,7 @@ void Lista<T>::insertar( T info ){
 	
 }
 
-template <typename T>
-void Lista<T>::siguiente(){
+void Lista::siguiente(){
 	
     if ( actual != nullptr )
     
@@ -72,22 +67,19 @@ void Lista<T>::siguiente(){
         
 }
 
-template <typename T>
-bool Lista<T>::haySiguiente(){
+bool Lista::haySiguiente(){
 	
 	return ( actual->siguiente == nullptr) ;
 	
 }
 
-template <typename T>
-void Lista<T>::primero(){
+void Lista::primero(){
 	
     actual = principio;
     
 }
 
-template <typename T>
-void Lista<T>::ultimo(){
+void Lista::ultimo(){
 	
     primero();
     
@@ -103,37 +95,33 @@ void Lista<T>::ultimo(){
                 
 }
 
-template <typename T>
-T Lista<T>::valorActual(){
+Palabra* Lista::valorActual(){
 	
-    return actual->info;
+    return actual->palabra;
     
 }
 
-template <typename T>
-int Lista<T>::cantElementos(){
+int Lista::cantElementos(){
 	
     return elementos;
     
 }
 
-template <typename T>
-int Lista<T>::getRepeticiones(){
+int Lista::getRepeticiones(){
 	
 	return actual->repeticiones;
 	
 }
 
-template <typename T>
-T Lista<T>::buscar( T info ){
+Palabra* Lista::buscar( string palabra ){
 	
 	Nodo* aux = principio;
 	
 	while ( aux != nullptr ){
 		
-		if ( aux->info == info ){
+		if ( aux->palabra->getPalabra() == palabra ){
 			
-			return aux->info;
+			return aux->palabra;
 			
 		}
 		
@@ -142,22 +130,21 @@ T Lista<T>::buscar( T info ){
 	
 }
 
-template <typename T>
-void Lista<T>::borrar(T info){
+void Lista::borrar(string palabra){
 	
     Nodo *ant, *aux;
 
     aux = principio;
     ant = nullptr;
     
-    while ( aux != nullptr && aux->info != info){
+    while ( aux != nullptr && aux->palabra->getPalabra() != palabra){
     	
         ant = aux;
         aux = aux->siguiente;
         
     }
 
-    if( aux == nullptr || aux->info != info){
+    if( aux == nullptr || aux->palabra->getPalabra() != palabra){
         return;
         
     }else{
@@ -176,8 +163,7 @@ void Lista<T>::borrar(T info){
     
 }
 
-template <typename T>
-Lista<T>::~Lista(){
+Lista::~Lista(){
 	
     Nodo* aux;
 
@@ -189,8 +175,5 @@ Lista<T>::~Lista(){
         
     }
 
-    actual = NULL;
+    actual = nullptr;
 }
-
-template class Lista<Palabra>;
-template class Lista<int>;

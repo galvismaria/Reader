@@ -21,10 +21,10 @@ class ArbolAVL{
 	public:
 		
 		ArbolAVL();
-		ArbolAVL(Palabra p);
+		ArbolAVL(Palabra* p);
 		Nodo *getRaiz();
 		int getAltura();
-		bool insertarNodo(Palabra p);
+		bool insertarNodo(Palabra* p);
 		bool quitarNodo(string palabra);
 		void inOrden(Nodo *nodo, bool esRaiz = true);
 		void imprimirInOrden();

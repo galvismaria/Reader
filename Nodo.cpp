@@ -1,6 +1,6 @@
 #include "Nodo.h"
 
-Nodo::Nodo( Palabra p ){
+Nodo::Nodo( Palabra *p ){
 	
 	info = p;
 	altura = 0;
@@ -34,7 +34,7 @@ int Nodo::getBalance(){
 
 }
 
-Palabra Nodo::getInfo(){
+Palabra* Nodo::getInfo(){
 	
 	return info;
 	

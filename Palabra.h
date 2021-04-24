@@ -2,19 +2,16 @@
 #define PALABRA
 
 #include "Global.h"
-//#include "Lista.h"
 
 using namespace std;
-
-template <typename T> class Lista;
 
 class Palabra{
 	
 	private:
 		
 		string palabra;
-		Lista<int> *paginas;
-		Lista<int> *lineas;
+		list<int> *paginas;
+		list<int> *lineas;
 		
 	public:
 		

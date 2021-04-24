@@ -10,7 +10,7 @@ class Hash{
 	
 	private:
 		
-		Lista<Palabra> *tabla[MAX_HASH];
+		Lista *tabla[MAX_HASH];
 		
 		int hashing(string palabra);
 		int hashing(int capitulo);
@@ -18,14 +18,14 @@ class Hash{
 	public:
 		
 		Hash();
-		void insertar(Palabra palabra);
-		void insertar(Palabra palabra, int capitulo);
+		void insertar(Palabra *palabra);
+		void insertar(Palabra *palabra, int capitulo);
 		
-		void eliminar(Palabra palabra);
-		void eliminar(Palabra palabra, int capitulo);
+		void eliminar(Palabra *palabra);
+		void eliminar(Palabra *palabra, int capitulo);
 		
-		bool pertenece(Palabra palabra);
-		bool pertenece(Palabra palabra, int capitulo);
+		bool pertenece(Palabra *palabra);
+		bool pertenece(Palabra *palabra, int capitulo);
 		
 		void imprimir();
 	

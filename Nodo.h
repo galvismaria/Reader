@@ -10,7 +10,7 @@ class Nodo{
 	
 	private:
 		
-		Palabra info;
+		Palabra *info;
 		int altura;
 		Nodo *der;
 		Nodo *izq;
@@ -18,9 +18,9 @@ class Nodo{
 	
 	public:
 		
-		Nodo( Palabra p );
+		Nodo( Palabra *p );
 		int getBalance();
-		Palabra getInfo();
+		Palabra* getInfo();
 		int getAltura();
 		Nodo *getDerecha();
 		Nodo *getIzquierda();

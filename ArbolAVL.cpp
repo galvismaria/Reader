@@ -6,7 +6,7 @@ ArbolAVL::ArbolAVL(){
 	
 }
 
-ArbolAVL::ArbolAVL( Palabra p ){
+ArbolAVL::ArbolAVL( Palabra *p ){
 	
 	raiz = new Nodo( p );
 	
@@ -38,10 +38,10 @@ Nodo* ArbolAVL::encontrarNodo( string palabra ){
 	
 	while ( temp != nullptr ){
 		
-		if ( palabra == temp->getInfo().getPalabra() )
+		if ( palabra == temp->getInfo()->getPalabra() )
 			break;
 			
-		else if ( tolower( palabra.at( 0 ) ) < tolower( temp->getInfo().getPalabra().at( 0 ) ) )
+		else if ( tolower( palabra.at( 0 ) ) < tolower( temp->getInfo()->getPalabra().at( 0 ) ) )
 			temp = temp->getIzquierda();
 		
 		else
@@ -65,7 +65,7 @@ Nodo *ArbolAVL::getRaiz(){
 	
 }
 
-bool ArbolAVL::insertarNodo( Palabra palabra ){
+bool ArbolAVL::insertarNodo( Palabra *palabra ){
 	
 	if ( raiz == nullptr )
 		raiz = new Nodo( palabra );
@@ -75,7 +75,7 @@ bool ArbolAVL::insertarNodo( Palabra palabra ){
 	
 	while ( temp != nullptr && nuevoNodo == nullptr ){
 		
-		if ( tolower( palabra.getPalabra().at( 0 ) ) < tolower( temp->getInfo().getPalabra().at( 0 ) ) ){
+		if ( tolower( palabra->getPalabra().at( 0 ) ) < tolower( temp->getInfo()->getPalabra().at( 0 ) ) ){
 			
 			if ( temp->getIzquierda() == nullptr )
 				nuevoNodo = temp->setIzquierda( new Nodo( palabra ) );
@@ -83,7 +83,7 @@ bool ArbolAVL::insertarNodo( Palabra palabra ){
 			else
 				temp = temp->getIzquierda();
 			
-		} else if ( tolower( palabra.getPalabra().at( 0 ) ) > tolower( temp->getInfo().getPalabra().at( 0 ) ) ){
+		} else if ( tolower( palabra->getPalabra().at( 0 ) ) > tolower( temp->getInfo()->getPalabra().at( 0 ) ) ){
 			
 			if ( temp->getDerecha() == nullptr )
 				nuevoNodo = temp->setDerecha( new Nodo( palabra ) );
@@ -91,7 +91,7 @@ bool ArbolAVL::insertarNodo( Palabra palabra ){
 			else
 				temp = temp->getDerecha();
 			
-		} else if ( palabra.getPalabra() == temp->getInfo().getPalabra() ){
+		} else if ( palabra->getPalabra() == temp->getInfo()->getPalabra() ){
 			
 			/* implementacion */
 			return false;
@@ -341,7 +341,7 @@ void ArbolAVL::inOrden( Nodo *nodo, bool esRaiz ){
 	if( nodo->getIzquierda() )
 		inOrden( nodo->getIzquierda(), false );
    
-	cout << nodo->getInfo().getPalabra() << endl;
+	cout << nodo->getInfo()->getPalabra() << endl;
 	
 	if( nodo->getDerecha() )
 		inOrden( nodo->getDerecha(), false );

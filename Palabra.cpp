@@ -1,19 +1,18 @@
 #include "Palabra.h"
-#include "Lista.h"
 
 Palabra::Palabra(){
 	
 	palabra = "\0";
-	paginas = new Lista<int>;
-	lineas = new Lista<int>;
+	paginas = new list<int>();
+	lineas = new list<int>();
 	
 }
 
 Palabra::Palabra( string p ){
 	
 	palabra = p;
-	paginas = new Lista<int>;
-	lineas = new Lista<int>;
+	paginas = new list<int>();
+	lineas = new list<int>();
 	
 }
 
@@ -31,13 +30,13 @@ string Palabra::getPalabra(){
 
 void Palabra::agregarPagina( int pag ){
 	
-	//lineas->insertar( pag);
+	paginas->push_back(pag);
 	
 }
 
 void Palabra::agregarLinea( int ln ){
 	
-	//lineas->insertar( ln );
+	lineas->push_back(ln);
 	
 }
 
@@ -59,7 +58,8 @@ Palabra& Palabra::operator = (const Palabra &p){
     if ( this != &p ) {
         
         palabra = p.palabra;
-        
+        paginas = p.paginas;
+        lineas = p.lineas;
         
     }
     return *this;
