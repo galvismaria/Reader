@@ -17,6 +17,7 @@ class Palabra{
 		
 		Palabra();
 		Palabra(string palabra);
+		Palabra(Palabra *p);
 		string getPalabra();
 		void agregarPagina(int pag);
 		void agregarLinea(int ln);

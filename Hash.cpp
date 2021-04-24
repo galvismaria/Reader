@@ -25,7 +25,7 @@ void Hash::insertar( Palabra *palabra ){
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-		tabla[hashClave]->insertarNodo(palabra);
+		tabla[hashClave]->insertarNodo( palabra );
 		
 	}
 
@@ -37,7 +37,7 @@ void Hash::insertar( Palabra *palabra, int capitulo ){
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		
-		tabla[hashClave]->insertarNodo(palabra);
+		tabla[hashClave]->insertarNodo( palabra );
 		
 	}
 	
@@ -127,12 +127,7 @@ void Hash::imprimir(){
 	
 	for ( int i = 0 ; i < MAX_HASH ; i++ ){
 		
-		if ( !tabla[i]->listaVacia() ){
-			
-			tabla[i]->imprimir();
-			cout << "\n\n";
-			
-		}
+		tabla[i]->imprimir();
 
 	}
 	

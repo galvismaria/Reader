@@ -4,7 +4,7 @@ Lista::Nodo::Nodo(){
 	
 	palabra = new Palabra();
 	repeticiones = 0;
-	siguiente = nullptr;
+	siguiente = NULL;
 	
 }
 
@@ -18,33 +18,59 @@ Lista::Nodo::Nodo( Palabra *p, int r, Nodo *sig ){
 
 Lista::Lista(){
 	
-    principio = actual = nullptr;
+    principio = actual = NULL;
     elementos = 0;
     
 }
 
 bool Lista::listaVacia(){
 	
-    return principio == nullptr;
+	if ( !principio )
+		return true;
+		
+	else
+		return false;
     
 }
 
 bool Lista::hayActual(){
 	
-	return actual != nullptr;
+	if ( actual )
+		return true;
+		
+	else
+		return false;
 	
 }
 
 void Lista::insertarNodo( Palabra *pb ){
 
-    if ( principio == nullptr ){
+    if ( listaVacia() ){
     
 		elementos++;
-		principio = new Nodo( pb, elementos, nullptr );
+		principio = new Nodo( pb, elementos, NULL );
         
     }
 	
-	else{
+	else if ( buscar(pb->getPalabra())->getPalabra() == pb->getPalabra() ){
+		
+		primero();
+		
+		while ( actual && ( actual->palabra->getPalabra() != pb->getPalabra() ) ){
+			
+			actual = actual->siguiente;
+			
+		}
+		
+		if ( !actual || ( actual->palabra->getPalabra() != pb->getPalabra() ) ){
+			
+			return;
+			
+		}
+		
+		actual->repeticiones++;
+		
+	} else {
     	
     	ultimo();
         elementos++;
@@ -56,7 +82,7 @@ void Lista::insertarNodo( Palabra *pb ){
 
 void Lista::siguiente(){
 	
-    if ( actual != nullptr )
+    if ( actual->siguiente )
     
         actual = actual->siguiente;
         
@@ -64,14 +90,18 @@ void Lista::siguiente(){
 
 bool Lista::haySiguiente(){
 	
-	return ( actual->siguiente == nullptr) ;
+	if ( actual->siguiente )
+		return true;
+		
+	else
+		return false;
 	
 }
 
 void Lista::primero(){
 	
     actual = principio;
-    
+   
 }
 
 void Lista::ultimo(){
@@ -80,7 +110,7 @@ void Lista::ultimo(){
     
     if ( !listaVacia() ){
         	
-        while ( actual->siguiente != nullptr ){
+        while ( actual->siguiente ){
         	
         	siguiente();
         	
@@ -112,7 +142,7 @@ Palabra* Lista::buscar( string palabra ){
 	
 	Nodo* aux = principio;
 	
-	while ( aux != nullptr ){
+	while ( aux ){
 		
 		if ( aux->palabra->getPalabra() == palabra ){
 			
@@ -123,6 +153,8 @@ Palabra* Lista::buscar( string palabra ){
 		aux = aux->siguiente;
 	}
 	
+	return new Palabra("\0");
+	
 }
 
 void Lista::borrar(string palabra){
@@ -130,21 +162,21 @@ void Lista::borrar(string palabra){
     Nodo *ant, *aux;
 
     aux = principio;
-    ant = nullptr;
+    ant = NULL;
     
-    while ( aux != nullptr && aux->palabra->getPalabra() != palabra){
+    while ( aux && ( aux->palabra->getPalabra() != palabra ) ){
     	
         ant = aux;
         aux = aux->siguiente;
         
     }
 
-    if( aux == nullptr || aux->palabra->getPalabra() != palabra){
+    if( !aux || ( aux->palabra->getPalabra() != palabra ) ){
         return;
         
-    }else{
+    } else{
 
-        if ( ant == nullptr){
+        if ( !ant ){
         	
             principio = aux->siguiente;
             
@@ -164,7 +196,7 @@ void Lista::imprimir(){
 		
 		actual = principio;
 	
-		while ( actual != nullptr ){
+		while ( actual ){
 		
 			cout << "Palabra: " << actual->palabra->getPalabra() << endl;
 			actual = actual->siguiente;
@@ -183,7 +215,7 @@ Lista::~Lista(){
 	
     Nodo* aux;
 
-    while ( principio != nullptr ){
+    while ( principio ){
     	
         aux = principio;
         principio = principio->siguiente;
@@ -191,5 +223,5 @@ Lista::~Lista(){
         
     }
 
-    actual = nullptr;
+    actual = NULL;
 }

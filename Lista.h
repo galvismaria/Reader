@@ -5,13 +5,6 @@
 
 using namespace std;
 
-/*
-
-		Clase template que implementa una Lista simplemente enlazada.
-		Se implementa como clase template para que la lista pueda usarse para las clases Estudiante y Curso.
-
-*/
-
 class Lista{
 	
     private:
@@ -73,7 +66,6 @@ class Lista{
 										
 		void borrar(string palabra);
 
-        
         /* ----- Destructor ----- */
         
         ~Lista();

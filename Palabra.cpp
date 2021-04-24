@@ -16,6 +16,14 @@ Palabra::Palabra( string p ){
 	
 }
 
+Palabra::Palabra(Palabra *p){
+	
+	palabra = p->getPalabra();
+	paginas = p->paginas;
+	lineas = p->lineas;
+	
+}
+
 string Palabra::getPalabra(){
 	
 	return palabra;
@@ -37,13 +45,21 @@ void Palabra::agregarLinea( int ln ){
 
 bool Palabra::operator == (Palabra p) const{
 	
-	return palabra == p.getPalabra();
+	if ( palabra == p.getPalabra() )
+		return true;
+		
+	else
+		return false;
 	
 }
 
 bool Palabra::operator != (Palabra p) const{
 	
-	return palabra != p.getPalabra();
+	if ( palabra != p.getPalabra() )
+		return true;
+		
+	else
+		return false;
 	
 }
 
