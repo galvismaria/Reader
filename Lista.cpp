@@ -162,7 +162,56 @@ void Lista::borrar(string palabra){
     
 }
 
-void Lista::imprimir(){
+void Lista::imprimirPalabras(){
+	
+	if ( !listaVacia() ){
+		
+		primero();
+	
+		while ( actual ){
+			
+			cout <<"\t\t-> "; 
+			actual->palabra->imprimir();
+			cout << "\n";
+			
+			actual = actual->siguiente;
+		
+		}
+		
+	} else{
+		
+		//cout << "Lista vacia" << endl;
+		
+	}
+	
+}
+
+void Lista::imprimirPaginas(){
+	
+	if ( !listaVacia() ){
+		
+		primero();
+	
+		while ( actual ){
+			
+			cout <<"\t\t-> ";
+			actual->palabra->imprimir();
+			actual->palabra->mostrarPaginas();
+			cout << "\n\n";
+			
+			actual = actual->siguiente;
+		
+		}
+		
+	} else{
+		
+		//cout << "Lista vacia" << endl;
+		
+	}
+	
+}
+
+void Lista::imprimirLineas(){
 	
 	if ( !listaVacia() ){
 		
@@ -170,7 +219,11 @@ void Lista::imprimir(){
 	
 		while ( actual ){
 		
+			cout <<"\t\t-> ";
 			actual->palabra->imprimir();
+			actual->palabra->mostrarLineas();
+			cout << "\n\n";
+			
 			actual = actual->siguiente;
 		
 		}

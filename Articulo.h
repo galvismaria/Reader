@@ -19,13 +19,13 @@ class Articulo{
 		
 		Articulo();
 		void insertarPalabra(string palabra, int linea, int pagina);
-		void crearTablaAlfabeticaAux(Nodo *nodo, bool esRaiz);
-		void crearTablaCapitulosAux(Nodo *nodo, bool esRaiz, int capitulo);
-		void crearTablaAlfabetica();
-		void crearTablaCapitulos();
-		void imprimirTablaCapitulos();
-		void imprimirTablaAlfabetica();
-		void indice();
+		void cargar();
+		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);
+		void crearTablaCapitulos(Nodo *nodo, bool esRaiz, int capitulo);
+		void indiceLineas();
+		void indicePaginas();
+		void menuPrincipal();
+		void salir();
 	
 };
 

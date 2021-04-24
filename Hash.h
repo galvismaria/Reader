@@ -27,7 +27,9 @@ class Hash{
 		bool pertenece(Palabra *palabra);
 		bool pertenece(Palabra *palabra, int capitulo);
 		
-		void imprimir();
+		void imprimirPalabras();
+        void imprimirPaginas();
+		void imprimirLineas();
 	
 };
 

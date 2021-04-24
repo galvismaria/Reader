@@ -125,11 +125,31 @@ bool Hash::pertenece( Palabra *palabra, int capitulo ){
 	
 }
 
-void Hash::imprimir(){
+void Hash::imprimirPalabras(){
 	
 	for ( int i = 0 ; i < MAX_HASH ; i++ ){
 		
-		tabla[i]->imprimir();
+		tabla[i]->imprimirPalabras();
+
+	}
+	
+}
+
+void Hash::imprimirPaginas(){
+	
+	for ( int i = 0 ; i < MAX_HASH ; i++ ){
+		
+		tabla[i]->imprimirPaginas();
+
+	}
+	
+}
+
+void Hash::imprimirLineas(){
+	
+	for ( int i = 0 ; i < MAX_HASH ; i++ ){
+		
+		tabla[i]->imprimirLineas();
 
 	}
 	

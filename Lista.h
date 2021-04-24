@@ -57,7 +57,13 @@ class Lista{
         
         void ultimo();					// Se ubica al final de la lista
         
-		void imprimir();				// Imprime la información guardada en el nodo
+        void imprimirPalabras();
+        
+        void imprimirPaginas();
+        
+		void imprimirLineas();		
+		
+		
 		
 		Palabra* buscar(string palabra);       		// Busca un nodo según el dato que se pase como parámetro
 										// Si se trata de una lista de estudiantes recibe una cédula como parámetro,

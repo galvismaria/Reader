@@ -21,6 +21,8 @@ class Palabra{
 		Palabra(Palabra *p);
 		string getPalabra();
 		void imprimir();
+		void mostrarPaginas();
+		void mostrarLineas();
 		void agregarPagina(int pag);
 		void agregarLinea(int ln);
 		bool operator == (Palabra p) const;

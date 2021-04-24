@@ -44,19 +44,17 @@ void Palabra::imprimir(){
 	
 	if ( palabra != "\0" ){
 		
-		cout << "Palabra: " << palabra << endl;
+		cout << palabra;
 		
-		cout << "Aparece en las lineas: ";
+	}	
+	
+}
+
+void Palabra::mostrarPaginas(){
+	
+	if ( palabra != "\0" ){
 		
-		for ( const int &l : *lineas ){
-			
-			cout << l << " ";
-			
-		}
-		
-		cout << "\n";
-		
-		cout << "Aparece en las paginas: ";
+		cout << "[ ";
 		
 		for ( const int &p : *paginas ){
 			
@@ -64,9 +62,27 @@ void Palabra::imprimir(){
 			
 		}
 		
-		cout << "\n";	
+		cout << "]" << endl;
 		
-	}	
+	}
+	
+}
+
+void Palabra::mostrarLineas(){
+	
+	if ( palabra != "\0" ){
+		
+		cout << "[ ";
+		
+		for ( const int &l : *lineas ){
+			
+			cout << l << " ";
+			
+		}
+		
+		cout << "]" << endl;
+		
+	}
 	
 }
 
