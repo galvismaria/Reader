@@ -48,30 +48,30 @@ int Palabra::Par::getRepeticiones(){
 Palabra::Palabra(){
 	
 	palabra = "\0";
-	paginas = new list<Par>();
-	lineas = new list<Par>();
+	//paginas = new list<Par>();
+	//lineas = new list<Par>();
 	
 }
 
 Palabra::Palabra( string palabra, int pagina, int linea ){
 	
-	paginas = new list<Par>();
-	lineas = new list<Par>();
+	//paginas = new list<Par>();
+	//lineas = new list<Par>();
 	
-	Par pag(pagina, 1);
-	Par ln(linea, 1);
+	//Par pag(pagina, 1);
+	//Par ln(linea, 1);
 	
 	this->palabra = palabra;
-	paginas->push_back(pag);
-	lineas->push_back(ln);
+	//paginas->push_back(pag);
+	//lineas->push_back(ln);
 	
 }
 
 Palabra::Palabra(const Palabra &newPalabra){
 	
 	palabra = newPalabra.palabra;
-	paginas = newPalabra.paginas;
-	lineas = newPalabra.lineas;
+	//paginas = newPalabra.paginas;
+	//lineas = newPalabra.lineas;
 	
 }
 
@@ -97,5 +97,17 @@ bool Palabra::operator != (Palabra p) const{
 	
 	return palabra != p.getPalabra();
 	
+}
+
+Palabra& Palabra::operator = (const Palabra &p)
+{
+    if ( this != &p ){
+    	
+        this->palabra = p.palabra;
+        //this->paginas = p.paginas;
+        //this->lineas = p.lineas;
+    }
+    
+    return *this;
 }
 
