@@ -70,6 +70,7 @@ class Lista{
 										// y si se trata de una lista de cursos recibe un ID de materia como parámetro
 										
 		void borrar(T info);
+
         
         /* ----- Destructor ----- */
         

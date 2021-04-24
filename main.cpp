@@ -5,15 +5,15 @@ int main(){
 	
 	
 	
-	Palabra p1 ("hola", 1, 1);
-	Palabra p2 ("adios", 2, 2);
-	Palabra p3 ("lala", 3, 3);
+	Palabra p1 ("hola");
+	Palabra p2 ("adios");
+	Palabra p3 ("lala");
 	
 	Articulo *a = new Articulo();
 	
-	a->crearArbol( "hola", 1, 1 );
-	a->crearArbol( "adios", 1, 1) ;
-	a->crearArbol( "lala", 1, 1 );
+	a->crearArbol( "hola" );
+	a->crearArbol( "adios") ;
+	a->crearArbol( "lala");
 	a->imprimirTablaAlfabetica();
 	
 	

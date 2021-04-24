@@ -17,7 +17,7 @@ class Articulo{
 	public:
 		
 		Articulo();
-		void crearArbol(string palabra, int pagina, int linea);
+		void crearArbol(string palabra);
 		void crearTablaCapitulos(Nodo *nodo, bool esRaiz, int capitulo);
 		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);
 		void imprimirTablaCapitulos();

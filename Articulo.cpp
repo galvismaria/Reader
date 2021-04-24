@@ -8,9 +8,9 @@ Articulo::Articulo(){
 
 }
 
-void Articulo::crearArbol( string palabra, int pagina, int linea ){
+void Articulo::crearArbol( string palabra ){
 	
-	Palabra p(palabra, pagina, linea);
+	Palabra p(palabra);
 	
 	palabras->insertarNodo( p );
 	

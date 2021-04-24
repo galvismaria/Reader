@@ -9,20 +9,17 @@ Palabra::Palabra(){
 	
 }
 
-Palabra::Palabra( string palabra, int pagina, int linea ){
+Palabra::Palabra( string p ){
 	
-	this->palabra = palabra;
+	palabra = p;
 	paginas = new Lista<int>;
-	paginas->insertar(pagina);
 	lineas = new Lista<int>;
-	lineas->insertar(linea);
 	
 }
 
 Palabra::Palabra(const Palabra &nuevaPalabra){
 	
-	palabra = nuevaPalabra.Palabra;
-	
+	palabra = nuevaPalabra.palabra;	
 	
 }
 
@@ -31,6 +28,19 @@ string Palabra::getPalabra(){
 	return palabra;
 	
 }
+
+void Palabra::agregarPagina( int pag ){
+	
+	//lineas->insertar( pag);
+	
+}
+
+void Palabra::agregarLinea( int ln ){
+	
+	//lineas->insertar( ln );
+	
+}
+
 
 bool Palabra::operator == (Palabra p) const{
 	

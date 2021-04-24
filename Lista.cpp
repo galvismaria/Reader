@@ -192,20 +192,5 @@ Lista<T>::~Lista(){
     actual = NULL;
 }
 
-Lista<T>& Lista<T>::operator = (const Lista<T> &l){
-	
-	this->actual = this->principio;
-	l.actual = l.principio;
-	
-	while ( this->actual || l.actual ){
-		
-		this->actual->info = l.actual.info;
-		this->
-	}
-	
-	return *this;
-	
-}
-
 template class Lista<Palabra>;
 template class Lista<int>;

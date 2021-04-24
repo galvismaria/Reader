@@ -19,11 +19,14 @@ class Palabra{
 	public:
 		
 		Palabra();
-		Palabra(string palabra, int pagina, int linea);
+		Palabra(string palabra);
 		Palabra(const Palabra &nuevaPalabra);
 		string getPalabra();
+		void agregarPagina(int pag);
+		void agregarLinea(int ln);
 		bool operator == (Palabra p) const;
 		bool operator != (Palabra p) const;
+		Palabra& operator = (const Palabra &p);
 			
 };
 

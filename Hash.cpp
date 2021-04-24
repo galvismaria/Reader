@@ -127,7 +127,7 @@ void Hash::imprimir(){
 	
 	for ( int i = 0 ; i < MAX_HASH ; i++ ){
 		
-		if ( tabla[i]->getRepeticiones() > 0 ){
+		if ( !tabla[i]->listaVacia() ){
 			
 			tabla[i]->primero();
 			
