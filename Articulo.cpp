@@ -2,58 +2,73 @@
 
 Articulo::Articulo(){
 
-	palabras = new ArbolAVL();
+	arbolPalabras = new ArbolAVL();
 	tablaCapitulos = new Hash();
 	tablaAlfabetica = new Hash();
 
 }
 
-void Articulo::crearArbol( string palabra ){
+void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 	
-	palabras->insertarNodo( new Palabra (palabra) );
+	arbolPalabras->insertarNodo( new Palabra (palabra, linea, pagina), linea, pagina );
 	
 }
 
-void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
+void Articulo::crearTablaAlfabeticaAux( Nodo *nodo, bool esRaiz ){
 	
 	if ( esRaiz )
-		nodo = palabras->getRaiz();
+		nodo = arbolPalabras->getRaiz();
 	
 	if ( nodo->getIzquierda() )
-		crearTablaCapitulos( nodo->getIzquierda(), false, capitulo );
+		crearTablaAlfabeticaAux( nodo->getIzquierda(), false );
 	
-	tablaCapitulos->insertar( nodo->getInfo(), capitulo );
+	if ( nodo->getInfo()->getPalabra() != "\0" )
+		tablaCapitulos->insertar( nodo->getInfo() );
 	
 	if ( nodo->getDerecha() )
-		crearTablaCapitulos( nodo->getDerecha(), false, capitulo );
+		crearTablaAlfabeticaAux( nodo->getDerecha(), false );
 	
 }
 
-void Articulo::crearTablaAlfabetica( Nodo *nodo, bool esRaiz ){
+void Articulo::crearTablaCapitulosAux( Nodo *nodo, bool esRaiz, int capitulo ){
 	
 	if ( esRaiz )
-		nodo = palabras->getRaiz();
+		nodo = arbolPalabras->getRaiz();
 	
 	if ( nodo->getIzquierda() )
-		crearTablaAlfabetica( nodo->getIzquierda(), false );
+		crearTablaCapitulosAux( nodo->getIzquierda(), false, capitulo );
 	
-	tablaCapitulos->insertar( nodo->getInfo() );
+	if ( nodo->getInfo()->getPalabra() != "\0" )
+		tablaCapitulos->insertar( nodo->getInfo(), capitulo );
 	
 	if ( nodo->getDerecha() )
-		crearTablaAlfabetica( nodo->getDerecha(), false );
+		crearTablaCapitulosAux( nodo->getDerecha(), false, capitulo );
 	
 }
 
-void Articulo::imprimirTablaCapitulos(){
+void Articulo::crearTablaAlfabetica(){
 	
-	crearTablaCapitulos( palabras->getRaiz() , true, 1 );
+	crearTablaAlfabeticaAux( arbolPalabras->getRaiz() , true );
 	tablaCapitulos->imprimir();
+	
+}
+
+void Articulo::crearTablaCapitulos(){
+	
+	crearTablaCapitulosAux( arbolPalabras->getRaiz() , true, 0 );
 	
 }
 
 void Articulo::imprimirTablaAlfabetica(){
 	
-	crearTablaAlfabetica( palabras->getRaiz() , true );
 	tablaAlfabetica->imprimir();
 	
 }
+
+void Articulo::imprimirTablaCapitulos(  ){
+	
+	tablaCapitulos->imprimir();
+	
+}
+
+

@@ -3,18 +3,17 @@
 
 int main(){
 	
-	
-	
-	Palabra p1 ("hola");
-	Palabra p2 ("adios");
-	Palabra p3 ("lala");
-	
 	Articulo *a = new Articulo();
 	
-	a->crearArbol( "hola" );
-	a->crearArbol( "adios") ;
-	a->crearArbol( "lala");
-	a->imprimirTablaAlfabetica();
+	a->insertarPalabra( "hola", 1, 2);
+	a->insertarPalabra( "adios", 3, 4) ;
+	a->insertarPalabra( "lala", 45, 6);
+	a->insertarPalabra( "lala", 23, 4);
+	
+	
+	
+	a->crearTablaAlfabetica();
+
 	
 	
 	

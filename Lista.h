@@ -16,11 +16,10 @@ class Lista{
     		public:
     			
     			Palabra *palabra;					// Dato que se almacena en la lista
-    			int repeticiones;		// Indica cuantas veces se repite el elemento
     			Nodo *siguiente;		// Apuntador al siguiente elemento
     			
     			Nodo();
-    			Nodo(Palabra *p, int r, Nodo *sig);
+    			Nodo(Palabra *p, Nodo *sig);
     		
 		};
     	

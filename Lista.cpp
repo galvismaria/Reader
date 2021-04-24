@@ -3,15 +3,13 @@
 Lista::Nodo::Nodo(){
 	
 	palabra = new Palabra();
-	repeticiones = 0;
 	siguiente = NULL;
 	
 }
 
-Lista::Nodo::Nodo( Palabra *p, int r, Nodo *sig ){
+Lista::Nodo::Nodo( Palabra *p, Nodo *sig ){
 	
 	palabra = p;
-	repeticiones = r;
 	siguiente = sig;
 	
 }
@@ -48,33 +46,13 @@ void Lista::insertarNodo( Palabra *pb ){
     if ( listaVacia() ){
     
 		elementos++;
-		principio = new Nodo( pb, elementos, NULL );
+		principio = new Nodo( pb, NULL );
         
-    }
-	
-	else if ( buscar(pb->getPalabra())->getPalabra() == pb->getPalabra() ){
-		
-		primero();
-		
-		while ( actual && ( actual->palabra->getPalabra() != pb->getPalabra() ) ){
-			
-			actual = actual->siguiente;
-			
-		}
-		
-		if ( !actual || ( actual->palabra->getPalabra() != pb->getPalabra() ) ){
-			
-			return;
-			
-		}
-		
-		actual->repeticiones++;
-		
-	} else {
+    } else {
     	
     	ultimo();
         elementos++;
-        actual->siguiente = new Nodo( pb, elementos, actual->siguiente );
+        actual->siguiente = new Nodo( pb, actual->siguiente );
             
     }
 	
@@ -130,12 +108,6 @@ int Lista::cantElementos(){
 	
     return elementos;
     
-}
-
-int Lista::getRepeticiones(){
-	
-	return actual->repeticiones;
-	
 }
 
 Palabra* Lista::buscar( string palabra ){
@@ -194,18 +166,18 @@ void Lista::imprimir(){
 	
 	if ( !listaVacia() ){
 		
-		actual = principio;
+		primero();
 	
 		while ( actual ){
 		
-			cout << "Palabra: " << actual->palabra->getPalabra() << endl;
+			actual->palabra->imprimir();
 			actual = actual->siguiente;
 		
 		}
 		
 	} else{
 		
-		cout << "Lista vacia" << endl;
+		//cout << "Lista vacia" << endl;
 		
 	}
 	
@@ -222,6 +194,8 @@ Lista::~Lista(){
         delete aux;
         
     }
-
+    
+	elementos = 0;
     actual = NULL;
+
 }

@@ -65,7 +65,7 @@ Nodo *ArbolAVL::getRaiz(){
 	
 }
 
-bool ArbolAVL::insertarNodo( Palabra *palabra ){
+bool ArbolAVL::insertarNodo( Palabra *palabra, int linea, int pagina ){
 	
 	if ( raiz == nullptr )
 		raiz = new Nodo( palabra );
@@ -75,29 +75,32 @@ bool ArbolAVL::insertarNodo( Palabra *palabra ){
 	
 	while ( temp != nullptr && nuevoNodo == nullptr ){
 		
-		if ( tolower( palabra->getPalabra().at( 0 ) ) < tolower( temp->getInfo()->getPalabra().at( 0 ) ) ){
+		if ( palabra->getPalabra() < temp->getInfo()->getPalabra() ){
 			
 			if ( temp->getIzquierda() == nullptr )
 				nuevoNodo = temp->setIzquierda( new Nodo( palabra ) );
-			
+				
 			else
 				temp = temp->getIzquierda();
 			
-		} else if ( tolower( palabra->getPalabra().at( 0 ) ) > tolower( temp->getInfo()->getPalabra().at( 0 ) ) ){
+		} else if ( palabra->getPalabra() > temp->getInfo()->getPalabra() ){
 			
 			if ( temp->getDerecha() == nullptr )
 				nuevoNodo = temp->setDerecha( new Nodo( palabra ) );
-				
+					
 			else
 				temp = temp->getDerecha();
 			
 		} else if ( palabra->getPalabra() == temp->getInfo()->getPalabra() ){
 			
-			/* implementacion */
+			temp->getInfo()->agregarPagina( pagina );
+			temp->getInfo()->agregarLinea( linea );
+			
 			return false;
 		}
 		
 	}
+		
 	
 	temp = nuevoNodo;
 	

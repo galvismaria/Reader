@@ -3,7 +3,7 @@
 Hash::Hash(){
 	
 	for ( int i = 0 ; i < MAX_HASH ; i++ )
-		tabla[i] = new Lista;
+		tabla[i] = new Lista();
 	
 }
 
@@ -22,6 +22,8 @@ int Hash::hashing( int capitulo ){
 void Hash::insertar( Palabra *palabra ){
 	
 	int hashClave = hashing( palabra->getPalabra() );
+	
+
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){
 		

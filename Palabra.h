@@ -17,8 +17,10 @@ class Palabra{
 		
 		Palabra();
 		Palabra(string palabra);
+		Palabra(string pb, int linea, int pagina);
 		Palabra(Palabra *p);
 		string getPalabra();
+		void imprimir();
 		void agregarPagina(int pag);
 		void agregarLinea(int ln);
 		bool operator == (Palabra p) const;

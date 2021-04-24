@@ -24,7 +24,7 @@ class ArbolAVL{
 		ArbolAVL(Palabra* p);
 		Nodo *getRaiz();
 		int getAltura();
-		bool insertarNodo(Palabra* p);
+		bool insertarNodo(Palabra* p, int linea, int pagina);
 		bool quitarNodo(string palabra);
 		void inOrden(Nodo *nodo, bool esRaiz = true);
 		void imprimirInOrden();

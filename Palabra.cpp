@@ -16,7 +16,17 @@ Palabra::Palabra( string p ){
 	
 }
 
-Palabra::Palabra(Palabra *p){
+Palabra::Palabra(string pb, int linea, int pagina){
+	
+	palabra = pb;
+	paginas = new list<int>;
+	lineas = new list<int>;
+	agregarPagina( pagina );
+	agregarLinea( linea );
+
+}
+
+Palabra::Palabra( Palabra *p ){
 	
 	palabra = p->getPalabra();
 	paginas = p->paginas;
@@ -30,15 +40,55 @@ string Palabra::getPalabra(){
 	
 }
 
+void Palabra::imprimir(){
+	
+	if ( palabra != "\0" ){
+		
+		cout << "Palabra: " << palabra << endl;
+		
+		cout << "Aparece en las lineas: ";
+		
+		for ( const int &l : *lineas ){
+			
+			cout << l << " ";
+			
+		}
+		
+		cout << "\n";
+		
+		cout << "Aparece en las paginas: ";
+		
+		for ( const int &p : *paginas ){
+			
+			cout << p << " ";
+			
+		}
+		
+		cout << "\n";	
+		
+	}	
+	
+}
+
 void Palabra::agregarPagina( int pag ){
 	
-	paginas->push_back(pag);
+	list<int>::iterator it;
+	it = find( paginas->begin(), paginas->end(), pag );
+	
+	if ( it == paginas->end() ){
+		paginas->push_back(pag);
+	}
 	
 }
 
 void Palabra::agregarLinea( int ln ){
 	
-	lineas->push_back(ln);
+	list<int>::iterator it;
+	it = find( lineas->begin(), lineas->end(), ln );
+	
+	if ( it == lineas->end() ){
+		lineas->push_back(ln);
+	}
 	
 }
 
