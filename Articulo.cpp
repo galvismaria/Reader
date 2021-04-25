@@ -255,9 +255,9 @@ void Articulo::busquedaPalabra(){
 		system("cls");
 		cout <<"\n\n\n\t\t";
 		resultado->imprimir();
-		cout <<"\n\n\t\t";
+		cout <<"\n\n\t\tSe encuentra en las lineas: ";
 		resultado->mostrarLineas();
-		cout <<"\n\t\t";
+		cout <<"\n\t\tSe encuentra en las paginas: ";
 		resultado->mostrarPaginas();
 		cout <<"\n\t\t";
 		system("pause");

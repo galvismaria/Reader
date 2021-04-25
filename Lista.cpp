@@ -194,10 +194,10 @@ void Lista::imprimirPaginas(){
 	
 		while ( actual ){
 			
-			cout <<"\t\t";
 			actual->palabra->imprimir();
+			cout << "\n\n";
 			actual->palabra->mostrarPaginas();
-			
+			cout << "\n\n";
 			actual = actual->siguiente;
 		
 		}
@@ -217,11 +217,11 @@ void Lista::imprimirLineas(){
 		primero();
 	
 		while ( actual ){
-		
-			cout <<"\t";
+		;
 			actual->palabra->imprimir();
+			cout << "\n\n";
 			actual->palabra->mostrarLineas();
-			
+			cout << "\n\n";
 			actual = actual->siguiente;
 		
 		}

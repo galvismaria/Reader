@@ -42,9 +42,11 @@ string Palabra::getPalabra(){
 
 void Palabra::imprimir(){
 	
+	
 	if ( palabra != "\0" ){
 		
-		cout << palabra << " ";
+		printf( "\033[1;93m%s\033[0m\n", palabra.c_str() );
+		cout << " ";
 		
 	}	
 	
@@ -54,15 +56,14 @@ void Palabra::mostrarPaginas(){
 	
 	if ( palabra != "\0" ){
 		
-		cout << "[ ";
-		
 		for ( const int &p : *paginas ){
 			
-			cout << p << " ";
+			cout << setw(5);
+			cout << p;
 			
 		}
 		
-		cout << "]" << endl;
+		cout << endl;
 		
 	}
 	
@@ -72,15 +73,14 @@ void Palabra::mostrarLineas(){
 	
 	if ( palabra != "\0" ){
 		
-		cout << "[ ";
-		
 		for ( const int &l : *lineas ){
 			
-			cout << l << " ";
+			cout << setw(6);
+			cout << l;
 			
 		}
 		
-		cout << "]" << endl;
+		cout << endl;
 		
 	}
 	
