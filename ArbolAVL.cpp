@@ -363,7 +363,7 @@ int ArbolAVL::palabrasUnicas( Nodo *nodo ){
 	
 	else
 	
-		return ( palabrasUnicas ( nodo->getIzquierda() + palabrasUnicas( nodo->getDerecha() ) )
+		return ( palabrasUnicas ( nodo->getIzquierda() + palabrasUnicas( nodo->getDerecha() ) ));
    
 }
 
