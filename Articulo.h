@@ -27,6 +27,8 @@ class Articulo{
 		void toLowercase(string str);
 		void cargarTablaCapitulos();
 		void cargarTablaAlfabetica();
+		void cargarArchivo();
+		void cargarTotalDocumento();
 		void insertarPalabra(string palabra, int linea, int pagina);
 		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);
 		void crearTablaCapitulos(Nodo *nodo, bool esRaiz, int capitulo);

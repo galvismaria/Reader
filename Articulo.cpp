@@ -150,6 +150,70 @@ void Articulo::cargarTablaCapitulos(){
 
 }
 
+void Articulo::cargarArchivo(){
+	
+	system("cls");
+	setlocale(LC_ALL, "");
+    string nombreArchivo = "file.txt";
+    ifstream archivo(nombreArchivo.c_str());
+     if (!archivo){
+       cout << "No se consiguio el archivo "<< endl;
+    }
+    string linea;
+	
+    cout<< "\t----------------------------Contenido del archivo.----------------------\n\n"<<endl;
+
+	while (getline(archivo, linea)) {
+		
+      cout << linea << endl;
+       
+    }    
+    
+	system ("pause");
+}
+
+void Articulo::cargarTotalDocumento(){
+	
+	system("cls");
+    string nombreArchivo = "file.txt";
+    ifstream archivo(nombreArchivo.c_str());
+     if (!archivo){
+       cout << "No se consiguio el archivo "<< endl;
+    }
+    string linea;
+    int Line = 1, capitulos = 0, Pag = 0, totalPalabras = 0;
+    string palabra;
+	
+     
+	cout<<endl;
+	cout<<endl;
+    cout<< "\t----------------------------Contenido total.----------------------\n\n"<<endl;
+    while (getline(archivo, linea)) {
+        istringstream iss(linea);
+      
+        if (linea.find("capitulo") != std::string::npos){
+            capitulos++;
+        }
+        if (linea.find("pagina") != std::string::npos){
+                Pag++;
+        }
+        
+        while ( iss >> palabra ){
+        		
+        		if(iss){
+        			totalPalabras++;
+				}
+			}
+		 Line++ ;	
+    }
+     cout << "\tNumero de lineas en total: "<< --Line << endl;
+     cout << "\tNumero de palabras en total: "<< totalPalabras<< endl;
+     cout << "\tNumero de palabras repetidas: " << endl;
+     cout << "\tNumero de capitulos en total: "<<capitulos << endl;
+     cout << "\tNumero de paginas en total: "<< Pag << endl;
+     cout<<endl;
+	system("pause");
+}
 void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 	
 	arbolPalabras->insertarNodo( new Palabra (palabra, linea, pagina), linea, pagina );
@@ -423,8 +487,17 @@ void Articulo::menuPrincipal(){
 			case(4):
 			
 				busquedaPalabra();
+				break;
+					
+			case(6):
+			
+				cargarArchivo();
 				break;	
 			
+			case(7):
+			
+				cargarTotalDocumento();
+				break;
 			case(8):
 				
 				salir();			
