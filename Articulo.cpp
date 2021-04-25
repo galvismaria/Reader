@@ -28,10 +28,16 @@ int Articulo::extraerNumero( string str ){
     
 }
 
+void Articulo::toLowercase( string str ){
+	
+	
+	
+}
+
 void Articulo::cargarTablaAlfabetica(){
 	
-    setlocale( LC_ALL, "" );
-    string nombreArchivo = "textoprueba-corto.txt";
+    //setlocale( LC_ALL, "" );
+    string nombreArchivo = "file.txt";
     
     ifstream archivo( nombreArchivo.c_str() );
     
@@ -60,8 +66,14 @@ void Articulo::cargarTablaAlfabetica(){
         } else{
         	
         	while ( iss >> palabra ){
+        		
+        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
+        		
+        		string str;
+        		
+        		for( char c : palabra ) if( std::isalnum(c) ) str += c ;
   
-        		arbolPalabras->insertarNodo( new Palabra (palabra, line, pag + 1 ), line, pag + 1 );
+        		arbolPalabras->insertarNodo( new Palabra (str, line, pag + 1 ), line, pag + 1 );
         		
 			}
         	
@@ -78,7 +90,7 @@ void Articulo::cargarTablaAlfabetica(){
 void Articulo::cargarTablaCapitulos(){
 	
     setlocale( LC_ALL, "" );
-    string nombreArchivo = "textoprueba-corto.txt";
+    string nombreArchivo = "file.txt";
     
     ifstream archivo( nombreArchivo.c_str() );
     
@@ -108,8 +120,14 @@ void Articulo::cargarTablaCapitulos(){
         } else{
         	
         	while ( iss >> palabra ){
+        		
+        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
+        		
+        		string str;
+        		
+        		for( char c : palabra ) if( std::isalnum(c) ) str += c ;
   
-        		arbolPalabras->insertarNodo( new Palabra (palabra, line, pag + 1 ), line, pag + 1 );
+        		arbolPalabras->insertarNodo( new Palabra (str, line, pag + 1 ), line, pag + 1 );
         		
 			}
 
@@ -248,22 +266,7 @@ void Articulo::busquedaPalabra(){
 
 }
 
-void Articulo::eliminarPalabra(){
-	
-	string palabra;
-	Palabra *resultado;
-	
-	system("cls");
-	cout << "\n\n";
-	cout << "\n\n\tInserte palabra a eliminar: ";
-	
-	cin >> palabra;
-	
-	arbolPalabras->quitarNodo( palabra );
-	cargarTablaAlfabetica();
-	cargarTablaCapitulos();
-	
-}
+
 
 void Articulo::menuPrincipal(){
 	

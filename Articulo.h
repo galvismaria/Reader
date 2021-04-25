@@ -24,6 +24,7 @@ class Articulo{
 		
 		Articulo();
 		int extraerNumero(string str);
+		void toLowercase(string str);
 		void cargarTablaCapitulos();
 		void cargarTablaAlfabetica();
 		void insertarPalabra(string palabra, int linea, int pagina);

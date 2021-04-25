@@ -6,4 +6,4 @@
 #include <locale.h>
 #include <list>
 #include <algorithm>
-#define MAX_HASH 20
+#define MAX_HASH 50
