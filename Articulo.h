@@ -24,7 +24,8 @@ class Articulo{
 		
 		Articulo();
 		int extraerNumero(string str);
-		void leerArchivo();
+		void cargarTablaCapitulos();
+		void cargarTablaAlfabetica();
 		void insertarPalabra(string palabra, int linea, int pagina);
 		void cargar();
 		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);

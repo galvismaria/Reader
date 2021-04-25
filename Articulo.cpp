@@ -28,7 +28,7 @@ int Articulo::extraerNumero( string str ){
     
 }
 
-void Articulo::leerArchivo(){
+void Articulo::cargarTablaAlfabetica(){
 	
     setlocale( LC_ALL, "" );
     string nombreArchivo = "textoprueba-corto.txt";
@@ -68,6 +68,39 @@ void Articulo::leerArchivo(){
 		}
         	
         line++;
+        
+	}
+    
+     cout << "Numero de lineas en total: "<< --line << endl;
+     cout << "Numero de capitulos en total: "<< cap << endl;
+     cout << "Numero de paginas: "<< pag << endl;
+     
+    indicePaginas();
+     
+};
+
+void Articulo::cargarTablaCapitulos(){
+	
+    setlocale( LC_ALL, "" );
+    string nombreArchivo = "textoprueba-corto.txt";
+    
+    ifstream archivo( nombreArchivo.c_str() );
+    
+    if (!archivo){
+       cout << "Error: No se consiguio el archivo"<< endl;
+       return;
+    }
+    
+    string linea;
+    int line = 1, cap = 0, pag = 0;
+    bool flag = false;
+    
+    while ( getline (archivo, linea) ) {
+        
+        istringstream iss(linea);
+        string palabra;
+        
+        
         
 	}
     
