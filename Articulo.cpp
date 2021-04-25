@@ -8,6 +8,78 @@ Articulo::Articulo(){
 
 }
 
+int Articulo::extraerNumero( string str ){
+	
+    stringstream ss;    
+    ss << str;
+    
+    string temp;
+    int found;
+    
+    while ( !ss.eof() ) {
+  
+        ss >> temp;
+  
+        if ( stringstream(temp) >> found )
+            return found;
+
+        temp = "";
+    }
+    
+}
+
+void Articulo::leerArchivo(){
+	
+    setlocale( LC_ALL, "" );
+    string nombreArchivo = "textoprueba-corto.txt";
+    
+    ifstream archivo( nombreArchivo.c_str() );
+    
+    if (!archivo){
+       cout << "Error: No se consiguio el archivo"<< endl;
+       return;
+    }
+    
+    string linea;
+    int line = 1, cap = 1, pag = 1;
+    
+    while ( getline (archivo, linea) ) {
+        
+        istringstream iss(linea);
+        string palabra;
+        
+        if ( linea.find("capitulo") != std::string::npos ){
+        	
+        	cap = extraerNumero(linea);
+            //cout << "Capitulo: "<< cap << endl;
+
+        } else if (linea.find("pagina") != std::string::npos){
+			
+            pag = extraerNumero(linea);
+            //cout << "Pagina: "<< pag << endl;
+        } else{
+        	
+        	while ( iss >> palabra ){
+  
+        		arbolPalabras->insertarNodo( new Palabra (palabra, line, pag + 1 ), line, pag + 1 );
+        		
+			}
+        	
+		}
+        	
+        line++;
+        
+	}
+    
+     cout << "Numero de lineas en total: "<< --line << endl;
+     cout << "Numero de capitulos en total: "<< cap << endl;
+     cout << "Numero de paginas: "<< pag << endl;
+     
+    indicePaginas();
+     
+};
+
+
 void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 	
 	arbolPalabras->insertarNodo( new Palabra (palabra, linea, pagina), linea, pagina );
@@ -20,8 +92,6 @@ void Articulo::cargar(){
 	insertarPalabra( "adios", 3, 4) ;
 	insertarPalabra( "lala", 45, 6);
 	insertarPalabra( "lala", 23, 4);
-	
-	
 	
 }
 

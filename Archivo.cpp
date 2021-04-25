@@ -33,5 +33,5 @@ void Archivo(){
      cout << "Numero de lineas en total: "<< --Line << endl;
      cout << "Numero de capitulos en total: "<<capitulos << endl;
      cout << "Numero de paginas: "<< Pag << endl;
-}
+};
  

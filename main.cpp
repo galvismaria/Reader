@@ -5,5 +5,5 @@ int main(){
 	
 	Articulo *a = new Articulo();
 	
-	a->menuPrincipal();
+	a->leerArchivo();
 }
