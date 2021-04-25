@@ -27,6 +27,10 @@ class ArbolAVL{
 		bool insertarNodo(Palabra* p, int linea, int pagina);
 		bool quitarNodo(string palabra);
 		void inOrden(Nodo *nodo, bool esRaiz = true);
+<<<<<<< HEAD
+=======
+		int palabrasUnicas(Nodo *nodo, int cont);
+>>>>>>> f38c1b8929464028754b7d70f41e8eed555a09c8
 		void imprimirInOrden();
 		int palabrasUnicas( Nodo *nodo);
 	

@@ -9,7 +9,16 @@ Hash::Hash(){
 
 int Hash::hashing( string palabra ){
 	
-	return ( toupper( palabra.at( 0 ) ) - 'A' );
+	if ( isdigit( palabra.at(0) ) ){
+		
+		return ( palabra.at(0) - '0' );
+		
+	} else{
+		
+		return ( toupper( palabra.at( 0 ) ) - 'A' + 10 );
+		
+	}
+	
 	
 }
 
