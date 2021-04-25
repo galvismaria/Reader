@@ -129,9 +129,24 @@ bool Hash::pertenece( Palabra *palabra, int capitulo ){
 	
 }
 
-Palabra* Hash::buscarPalabra(string pb){
+Palabra* Hash::buscarPalabra( string pb ){
 	
 	int hashClave = hashing( pb );
+	Palabra *resultado;
+	
+	if (hashClave >= 0 && hashClave < MAX_HASH ){
+		
+		resultado = tabla[hashClave]->buscar( pb );
+		
+	}
+	
+	return resultado;
+	
+}
+
+Palabra* Hash::buscarPalabra( string pb, int capitulo ){
+	
+	int hashClave = hashing( capitulo );
 	Palabra *resultado;
 	
 	if (hashClave >= 0 && hashClave < MAX_HASH ){

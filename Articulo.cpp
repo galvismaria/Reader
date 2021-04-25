@@ -190,28 +190,45 @@ void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
 
 void Articulo::indiceLineas(){
 	
-	system("cls");
-	cout << "\n\n";
-	tablaAlfabetica->imprimirLineas();
-	system("pause");
+	bool flag = true;
+	
+	while ( flag ){
+		
+		system("cls");
+		cout << "\n\n";
+		tablaAlfabetica->imprimirLineas();
+		flag = borrarIndiceAlfabetico();
+	}
 	
 }
 
 void Articulo::indicePaginas(){
 	
-	system("cls");
-	cout << "\n\n";
-	tablaAlfabetica->imprimirPaginas();
-	system("pause");
+	bool flag = true;
+	
+	while ( flag ){
+		
+		system("cls");
+		cout << "\n\n";
+		tablaAlfabetica->imprimirPaginas();
+		flag = borrarIndiceAlfabetico();
+		
+	}
 	
 }
 
 void Articulo::indiceCapitulo( int capitulo ){
 	
-	system("cls");
-	cout << "\n\n";
-	tablaCapitulos->imprimirCapitulo( capitulo );
-	system("pause");
+	bool flag = true;
+	
+	while ( flag ){
+		
+		system("cls");
+		cout << "\n\n";
+		tablaCapitulos->imprimirCapitulo( capitulo );
+		flag = borrarIndiceCapitulo(capitulo);
+		
+	}
 	
 }
 
@@ -266,7 +283,77 @@ void Articulo::busquedaPalabra(){
 
 }
 
+bool Articulo::borrarIndiceAlfabetico(){
+	
+	string palabra;
+	Palabra *resultado;
+	
+	cout << "\n\n\t(Ingrese 's' para salir)\n\tInserte palabra a eliminar:";
+	
+	cin >> palabra;
+	
+	if ( palabra == "s" ){
+		
+		return false;
+		
+	} else{
+		
+		resultado = tablaAlfabetica->buscarPalabra( palabra );
+	
+		if ( resultado->getPalabra() == "\0" ){
+		
+			cout <<"\n\n\n\n\t\t";
+			cout << "La palabra no se encuentra en el indice" << endl;
+			cout <<"\n\n\t\t";
+			system("pause");
+			return false;
+			
+		} else{
+			
+			tablaAlfabetica->eliminar( resultado );
+			return true;
+			
+		}
+		
+	}
+		
+}
 
+bool Articulo::borrarIndiceCapitulo( int capitulo ){
+	
+	string palabra;
+	Palabra *resultado;
+	
+	cout << "\n\n\t(Ingrese 's' para salir)\n\tInserte palabra a eliminar:";
+	
+	cin >> palabra;
+	
+	if ( palabra == "s" ){
+		
+		return false;
+		
+	} else{
+		
+		resultado = tablaCapitulos->buscarPalabra( palabra, capitulo );
+	
+		if ( resultado->getPalabra() == "\0" ){
+		
+			cout <<"\n\n\n\n\t\t";
+			cout << "La palabra no se encuentra en el indice" << endl;
+			cout <<"\n\n\t\t";
+			system("pause");
+			return false;
+			
+		} else{
+			
+			tablaCapitulos->eliminar( resultado, capitulo );
+			return true;
+			
+		}
+		
+	}
+		
+}
 
 void Articulo::menuPrincipal(){
 	

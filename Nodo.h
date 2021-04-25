@@ -11,6 +11,7 @@ class Nodo{
 	private:
 		
 		Palabra *info;
+		int capitulo;
 		int altura;
 		Nodo *der;
 		Nodo *izq;

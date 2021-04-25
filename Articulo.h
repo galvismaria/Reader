@@ -35,6 +35,8 @@ class Articulo{
 		void indiceCapitulo(int capitulo);
 		void mostrarCapitulos();
 		void busquedaPalabra();
+		bool borrarIndiceAlfabetico();
+		bool borrarIndiceCapitulo(int capitulo);
 		void menuPrincipal();
 		void salir();
 	

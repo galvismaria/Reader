@@ -28,6 +28,7 @@ class Hash{
 		bool pertenece(Palabra *palabra, int capitulo);
 		
 		Palabra* buscarPalabra(string pb);
+		Palabra* buscarPalabra(string pb, int capitulo);
 		
 		void imprimirPalabras();
         void imprimirPaginas();
