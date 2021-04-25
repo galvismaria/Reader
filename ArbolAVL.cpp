@@ -351,6 +351,22 @@ void ArbolAVL::inOrden( Nodo *nodo, bool esRaiz ){
    
 }
 
+int ArbolAVL::palabrasUnicas( Nodo *nodo ){
+	
+	if ( nodo == NULL )
+	
+		return 0;
+	
+	if ( nodo->getInfo()->esUnica() )
+	
+		return 1;
+	
+	else
+	
+		return ( palabrasUnicas ( nodo->getIzquierda() + palabrasUnicas( nodo->getDerecha() ) )
+   
+}
+
 void ArbolAVL::imprimirInOrden(){
 	
 	inOrden( raiz, true );
