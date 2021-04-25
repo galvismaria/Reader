@@ -41,7 +41,7 @@ void Articulo::leerArchivo(){
     }
     
     string linea;
-    int line = 1, cap = 1, pag = 1;
+    int line = 1, cap = 0, pag = 0;
     
     while ( getline (archivo, linea) ) {
         
