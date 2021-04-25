@@ -71,11 +71,7 @@ void Articulo::cargarTablaAlfabetica(){
         
 	}
     
-     cout << "Numero de lineas en total: "<< --line << endl;
-     cout << "Numero de capitulos en total: "<< cap << endl;
-     cout << "Numero de paginas: "<< pag << endl;
-     
-    indicePaginas();
+    crearTablaAlfabetica( arbolPalabras->getRaiz(), true );
      
 };
 
@@ -100,31 +96,45 @@ void Articulo::cargarTablaCapitulos(){
         istringstream iss(linea);
         string palabra;
         
+        if ( linea.find( "capitulo" ) != std::string::npos ){
         
-        
-	}
-    
-     cout << "Numero de lineas en total: "<< --line << endl;
-     cout << "Numero de capitulos en total: "<< cap << endl;
-     cout << "Numero de paginas: "<< pag << endl;
-     
-    indicePaginas();
-     
-};
+        	cap = extraerNumero(linea);
+        	flag = true;
 
+        } else if ( linea.find( "pagina" ) != std::string::npos ){
+			
+            pag = extraerNumero(linea);
+
+        } else{
+        	
+        	while ( iss >> palabra ){
+  
+        		arbolPalabras->insertarNodo( new Palabra (palabra, line, pag + 1 ), line, pag + 1 );
+        		
+			}
+
+		}
+		
+		line++;
+		
+		if ( cap > 1 && flag ){
+        		
+        	crearTablaCapitulos( arbolPalabras->getRaiz(), true, cap - 1 );
+        	arbolPalabras = new ArbolAVL();
+        	flag = false;
+        		
+		}	
+     
+	}
+		
+    crearTablaCapitulos( arbolPalabras->getRaiz(), true, cap );
+    arbolPalabras = new ArbolAVL();	
+
+}
 
 void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 	
 	arbolPalabras->insertarNodo( new Palabra (palabra, linea, pagina), linea, pagina );
-	
-}
-
-void Articulo::cargar(){
-	
-	insertarPalabra( "hola", 1, 2);
-	insertarPalabra( "adios", 3, 4) ;
-	insertarPalabra( "lala", 45, 6);
-	insertarPalabra( "lala", 23, 4);
 	
 }
 
@@ -137,7 +147,7 @@ void Articulo::crearTablaAlfabetica( Nodo *nodo, bool esRaiz ){
 		crearTablaAlfabetica( nodo->getIzquierda(), false );
 	
 	if ( nodo->getInfo()->getPalabra() != "\0" )
-		tablaAlfabetica->insertar( nodo->getInfo() );
+		tablaAlfabetica->insertar( new Palabra ( nodo->getInfo() ) );
 	
 	if ( nodo->getDerecha() )
 		crearTablaAlfabetica( nodo->getDerecha(), false );
@@ -153,7 +163,7 @@ void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
 		crearTablaCapitulos( nodo->getIzquierda(), false, capitulo );
 	
 	if ( nodo->getInfo()->getPalabra() != "\0" )
-		tablaCapitulos->insertar( nodo->getInfo(), capitulo );
+		tablaCapitulos->insertar( new Palabra ( nodo->getInfo() ), capitulo );
 	
 	if ( nodo->getDerecha() )
 		crearTablaCapitulos( nodo->getDerecha(), false, capitulo );
@@ -162,7 +172,8 @@ void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
 
 void Articulo::indiceLineas(){
 	
-	crearTablaAlfabetica( arbolPalabras->getRaiz() , true );
+	system("cls");
+	cout << "\n\n";
 	tablaAlfabetica->imprimirLineas();
 	system("pause");
 	
@@ -170,17 +181,99 @@ void Articulo::indiceLineas(){
 
 void Articulo::indicePaginas(){
 	
-	crearTablaAlfabetica( arbolPalabras->getRaiz() , true );
+	system("cls");
+	cout << "\n\n";
 	tablaAlfabetica->imprimirPaginas();
 	system("pause");
 	
 }
 
+void Articulo::indiceCapitulo( int capitulo ){
+	
+	system("cls");
+	cout << "\n\n";
+	tablaCapitulos->imprimirCapitulo( capitulo );
+	system("pause");
+	
+}
+
+void Articulo::mostrarCapitulos(){
+	
+	int opcion;
+	
+	system("cls");
+	cout << "\n\n";
+	tablaCapitulos->mostrarCapitulos();
+	cout << "\n\tDesplegar indice del capitulo: ";
+	
+	cin >> opcion;
+	
+	indiceCapitulo( opcion );
+	
+}
+
+void Articulo::busquedaPalabra(){
+	
+	string palabra;
+	Palabra *resultado;
+	
+	system("cls");
+	cout << "\n\n\tInserte palabra a buscar: ";
+	
+	cin >> palabra;
+	
+	resultado = tablaAlfabetica->buscarPalabra(palabra);
+	
+	if ( resultado->getPalabra() == "\0" ){
+		
+		system("cls");
+		cout <<"\n\n\n\n\t\t";
+		cout << "La busqueda no arrojo ningun resultado" << endl;
+		cout <<"\n\n\t\t";
+		system("pause");
+		
+	} else{
+		
+		system("cls");
+		cout <<"\n\n\n\t\t";
+		resultado->imprimir();
+		cout <<"\n\n\t\t";
+		resultado->mostrarLineas();
+		cout <<"\n\t\t";
+		resultado->mostrarPaginas();
+		cout <<"\n\t\t";
+		system("pause");
+		
+	}
+
+}
+
+void Articulo::eliminarPalabra(){
+	
+	string palabra;
+	Palabra *resultado;
+	
+	system("cls");
+	cout << "\n\n";
+	cout << "\n\n\tInserte palabra a eliminar: ";
+	
+	cin >> palabra;
+	
+	arbolPalabras->quitarNodo( palabra );
+	cargarTablaAlfabetica();
+	cargarTablaCapitulos();
+	
+}
+
 void Articulo::menuPrincipal(){
+	
+	cargarTablaAlfabetica();
+	cargarTablaCapitulos();
 	
 	while (true){
 		
 		system("cls");
+		
 		cout << "\n\n";
 	
 		cout << "\t----------------------------------------------------------------------------------------------------" << " \n\n";
@@ -220,8 +313,6 @@ void Articulo::menuPrincipal(){
 			}
 		}
 		
-		cargar();
-		
 		switch (opcion) {
 			
 			case(1):
@@ -232,6 +323,16 @@ void Articulo::menuPrincipal(){
 			case(2):
 				
 				indicePaginas();
+				break;
+				
+			case(3):
+			
+				mostrarCapitulos();
+				break;
+				
+			case(4):
+			
+				busquedaPalabra();
 				break;	
 			
 			case(8):
@@ -243,10 +344,6 @@ void Articulo::menuPrincipal(){
 				break;
 		}
 		
-		delete arbolPalabras;
-		delete tablaCapitulos;
-		delete tablaAlfabetica;
-				
 	}
 		
 }

@@ -44,7 +44,7 @@ void Palabra::imprimir(){
 	
 	if ( palabra != "\0" ){
 		
-		cout << palabra;
+		cout << palabra << " ";
 		
 	}	
 	

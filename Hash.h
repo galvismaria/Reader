@@ -27,9 +27,13 @@ class Hash{
 		bool pertenece(Palabra *palabra);
 		bool pertenece(Palabra *palabra, int capitulo);
 		
+		Palabra* buscarPalabra(string pb);
+		
 		void imprimirPalabras();
         void imprimirPaginas();
 		void imprimirLineas();
+		void imprimirCapitulo( int capitulo );
+		void mostrarCapitulos();
 	
 };
 

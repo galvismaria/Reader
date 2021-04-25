@@ -27,11 +27,13 @@ class Articulo{
 		void cargarTablaCapitulos();
 		void cargarTablaAlfabetica();
 		void insertarPalabra(string palabra, int linea, int pagina);
-		void cargar();
 		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);
 		void crearTablaCapitulos(Nodo *nodo, bool esRaiz, int capitulo);
 		void indiceLineas();
 		void indicePaginas();
+		void indiceCapitulo(int capitulo);
+		void mostrarCapitulos();
+		void busquedaPalabra();
 		void menuPrincipal();
 		void salir();
 	

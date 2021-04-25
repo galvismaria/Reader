@@ -15,7 +15,11 @@ int Hash::hashing( string palabra ){
 
 int Hash::hashing( int capitulo ){
 	
-	return capitulo;
+	if ( capitulo > 0 ){
+		
+		return capitulo - 1 ;
+		
+	}
 	
 }
 
@@ -125,6 +129,21 @@ bool Hash::pertenece( Palabra *palabra, int capitulo ){
 	
 }
 
+Palabra* Hash::buscarPalabra(string pb){
+	
+	int hashClave = hashing( pb );
+	Palabra *resultado;
+	
+	if (hashClave >= 0 && hashClave < MAX_HASH ){
+		
+		resultado = tabla[hashClave]->buscar( pb );
+		
+	}
+	
+	return resultado;
+	
+}
+
 void Hash::imprimirPalabras(){
 	
 	for ( int i = 0 ; i < MAX_HASH ; i++ ){
@@ -150,6 +169,32 @@ void Hash::imprimirLineas(){
 	for ( int i = 0 ; i < MAX_HASH ; i++ ){
 		
 		tabla[i]->imprimirLineas();
+
+	}
+	
+}
+
+void Hash::imprimirCapitulo( int capitulo ){
+	
+	if ( capitulo > 0 ){
+		
+		cout << "\n\n\t\tCapitulo " << capitulo << "\n\n";
+		
+		tabla[capitulo - 1]->imprimirPalabras();
+		
+	}
+	
+}
+
+void Hash::mostrarCapitulos(){
+	
+	for ( int i = 0 ; i < MAX_HASH ; i++ ){
+		
+		if ( !tabla[i]->listaVacia() ){
+			
+			cout << "\t-> Capitulo " << i+1 << endl;
+			
+		}
 
 	}
 	
