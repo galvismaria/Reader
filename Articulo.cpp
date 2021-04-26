@@ -209,15 +209,18 @@ void Articulo::cargarTotalDocumento(){
         		if(iss){
         			totalPalabras++;
 				}
+
 			}
+			
 		 Line++ ;	
     }
-     cout << "\tNumero de lineas en total: "<< --Line << endl;
-     cout << "\tNumero de palabras en total: "<< totalPalabras<< endl;
-     cout << "\tNumero de palabras unicas: " << palabrasUnicas << endl;
-     cout << "\tNumero de capitulos en total: "<< capitulos << endl;
-     cout << "\tNumero de paginas en total: "<< Pag << endl;
-     cout<<endl;
+    
+    cout << "\tNumero de lineas en total: "<< --Line << endl;
+    cout << "\tNumero de palabras en total: "<< totalPalabras<< endl;
+    cout << "\tNumero de palabras unicas: " << palabrasUnicas << endl;
+    cout << "\tNumero de capitulos en total: "<< capitulos << endl;
+    cout << "\tNumero de paginas en total: "<< Pag << endl;
+    cout<<endl;
      
 	system("pause");
 }
