@@ -362,7 +362,11 @@ int ArbolAVL::palabrasUnicas( Nodo *nodo, int cont ){
 		
 	}
 	
+<<<<<<< HEAD
+		return ( palabrasUnicas ( nodo->getIzquierda() + palabrasUnicas( nodo->getDerecha() ) ));
+=======
 	return cont; 
+>>>>>>> f38c1b8929464028754b7d70f41e8eed555a09c8
    
 }
 

@@ -160,15 +160,21 @@ void Articulo::mostrarArchivo(){
        cout << "No se consiguio el archivo "<< endl;
     }
     string linea;
-	
     cout<< "\t----------------------------Contenido del archivo.----------------------\n\n"<<endl;
-
-	while (getline(archivo, linea)) {
+	
+	int i = 1, x;
+	while (getline(archivo, linea))	{
 		
-      cout << linea << endl;
-       
-    }    
-    
+	if(linea.find("capitulo") != std::string::npos){
+			
+      printf( " \t\n\n----------------------------------------Inicio del \033[1;93m%s\033[0m", linea.c_str()); cout<<"-----------------------------------\n\n";
+         cout<<endl;
+        }
+        
+		cout << linea << endl;
+		
+	}
+   
 	system ("pause");
 }
 
