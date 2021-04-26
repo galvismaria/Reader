@@ -25,6 +25,7 @@ class Palabra{
 		void mostrarLineas();
 		void agregarPagina(int pag);
 		void agregarLinea(int ln);
+		bool esUnica();
 		bool operator == (Palabra p) const;
 		bool operator != (Palabra p) const;
 		Palabra& operator = (const Palabra &p);
