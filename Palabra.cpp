@@ -110,20 +110,14 @@ void Palabra::agregarLinea( int ln ){
 
 bool Palabra::esUnica(){
 	
-	if ( !lineas->empty() && !paginas->empty() ){
-		
-		if ( lineas->size() == 1 && paginas->size() == 1 )
-			return true;
-		
-		else
-			return false;
-		
-	} else{
+	if ( lineas->size() == 1 )
+	
+		return true;
+	
+	else
 		
 		return false;
 		
-	}
-	
 }
 
 bool Palabra::operator == (Palabra p) const{

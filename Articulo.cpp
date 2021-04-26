@@ -84,6 +84,7 @@ void Articulo::cargarTablaAlfabetica(){
 	}
     
     crearTablaAlfabetica( arbolPalabras->getRaiz(), true );
+    palabrasUnicas = arbolPalabras->palabrasUnicas( arbolPalabras->getRaiz(), 0 );
      
 };
 
@@ -146,11 +147,10 @@ void Articulo::cargarTablaCapitulos(){
 	}
 		
     crearTablaCapitulos( arbolPalabras->getRaiz(), true, cap );
-    arbolPalabras = new ArbolAVL();	
 
 }
 
-void Articulo::cargarArchivo(){
+void Articulo::mostrarArchivo(){
 	
 	system("cls");
 	setlocale(LC_ALL, "");
@@ -180,11 +180,11 @@ void Articulo::cargarTotalDocumento(){
      if (!archivo){
        cout << "No se consiguio el archivo "<< endl;
     }
+    
     string linea;
     int Line = 1, capitulos = 0, Pag = 0, totalPalabras = 0;
     string palabra;
 	
-     
 	cout<<endl;
 	cout<<endl;
     cout<< "\t----------------------------Contenido total.----------------------\n\n"<<endl;
@@ -208,12 +208,14 @@ void Articulo::cargarTotalDocumento(){
     }
      cout << "\tNumero de lineas en total: "<< --Line << endl;
      cout << "\tNumero de palabras en total: "<< totalPalabras<< endl;
-     cout << "\tNumero de palabras repetidas: " << endl;
-     cout << "\tNumero de capitulos en total: "<<capitulos << endl;
+     cout << "\tNumero de palabras unicas: " << palabrasUnicas << endl;
+     cout << "\tNumero de capitulos en total: "<< capitulos << endl;
      cout << "\tNumero de paginas en total: "<< Pag << endl;
      cout<<endl;
+     
 	system("pause");
 }
+
 void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 	
 	arbolPalabras->insertarNodo( new Palabra (palabra, linea, pagina), linea, pagina );
@@ -491,13 +493,14 @@ void Articulo::menuPrincipal(){
 					
 			case(6):
 			
-				cargarArchivo();
+				mostrarArchivo();
 				break;	
 			
 			case(7):
 			
 				cargarTotalDocumento();
 				break;
+				
 			case(8):
 				
 				salir();			

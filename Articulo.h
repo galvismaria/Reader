@@ -16,9 +16,7 @@ class Articulo{
 		ArbolAVL *arbolPalabras;
 		Hash *tablaCapitulos;
 		Hash *tablaAlfabetica;
-		int lineasTotales;
-		int capitulosTotales;
-		int paginasTotales;
+		int palabrasUnicas;
 		
 	public:
 		
@@ -27,7 +25,7 @@ class Articulo{
 		void toLowercase(string str);
 		void cargarTablaCapitulos();
 		void cargarTablaAlfabetica();
-		void cargarArchivo();
+		void mostrarArchivo();
 		void cargarTotalDocumento();
 		void insertarPalabra(string palabra, int linea, int pagina);
 		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);

@@ -8,4 +8,4 @@
 #include <list>
 #include <algorithm>
 #include <windows.h>
-#define MAX_HASH 50
+#define MAX_HASH 60
