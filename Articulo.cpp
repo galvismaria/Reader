@@ -68,15 +68,20 @@ void Articulo::cargarTablaAlfabetica(){
         	
         	while ( iss >> palabra ){
         		
-        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
+        		if ( pag >= 1 && cap >= 1 ){
+        			
+        			transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
         		
-        		string str;
+        			string str;
         		
-        		for( char c : palabra ) if( std::isalnum(c) ) str += c ;
+        			for( char c : palabra ) if( std::isalnum(c) ) str += c ;
   
-        		arbolPalabras->insertarNodo( new Palabra (str, line, pag + 1 ), line, pag + 1 );
+        			arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
         		
-        		palabrasTotales++;
+        			palabrasTotales++;
+        			
+        			
+				}
         		
 			}
         	
@@ -128,13 +133,17 @@ void Articulo::cargarTablaCapitulos(){
         	
         	while ( iss >> palabra ){
         		
-        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
+        		if ( pag >= 1 && cap >= 1 ){
+        			
+        			transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
         		
-        		string str;
+        			string str;
         		
-        		for( char c : palabra ) if( std::isalnum(c) ) str += c ;
+        			for( char c : palabra ) if( std::isalnum(c) ) str += c ;
   
-        		arbolPalabras->insertarNodo( new Palabra (str, line, pag + 1 ), line, pag + 1 );
+        			arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
+        			
+				}
         		
 			}
 
