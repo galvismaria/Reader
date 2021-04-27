@@ -125,7 +125,7 @@ Palabra* Lista::buscar( string palabra ){
 		aux = aux->siguiente;
 	}
 	
-	return new Palabra("\0");
+	return new Palabra("\0", 0, 0);
 	
 }
 

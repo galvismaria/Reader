@@ -9,15 +9,8 @@ Hash::Hash(){
 
 int Hash::hashing( string palabra ){
 	
-	if ( isdigit( palabra.at(0) ) ){
 		
-		return ( palabra.at(0) - '0' );
-		
-	} else{
-		
-		return ( toupper( palabra.at( 0 ) ) - 'A' + 10 );
-		
-	}
+	return ( toupper( palabra.at( 0 ) ) - 'A' );
 	
 	
 }

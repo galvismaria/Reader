@@ -16,7 +16,6 @@ class Palabra{
 	public:
 		
 		Palabra();
-		Palabra(string palabra);
 		Palabra(string pb, int linea, int pagina);
 		Palabra(Palabra *p);
 		string getPalabra();

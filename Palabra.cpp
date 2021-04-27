@@ -8,14 +8,6 @@ Palabra::Palabra(){
 	
 }
 
-Palabra::Palabra( string p ){
-	
-	palabra = p;
-	paginas = new list<int>;
-	lineas = new list<int>;
-	
-}
-
 Palabra::Palabra(string pb, int linea, int pagina){
 	
 	palabra = pb;

@@ -26,6 +26,7 @@ class Articulo{
 		
 		Articulo();
 		int extraerNumero(string str);
+		bool esNumero(string str);
 		void cargarTablaCapitulos();
 		void cargarTablaAlfabetica();
 		void mostrarArchivo();

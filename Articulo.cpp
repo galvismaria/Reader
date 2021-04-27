@@ -33,6 +33,17 @@ int Articulo::extraerNumero( string str ){
     
 }
 
+bool Articulo::esNumero( string str ){
+	
+    for (int i = 0; i < str.length(); i++)
+    
+        if ( isdigit ( str[i] ) == false)
+            return false;
+ 
+    return true;
+	
+}
+
 void Articulo::cargarTablaAlfabetica(){
 	
     string nombreArchivo = "file.txt";
@@ -69,17 +80,19 @@ void Articulo::cargarTablaAlfabetica(){
         	while ( iss >> palabra ){
         		
         		if ( pag >= 1 && cap >= 1 ){
-        			
+        				
         			transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
         		
-        			string str;
-        		
-        			for( char c : palabra ) if( std::isalnum(c) ) str += c ;
-  
-        			arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
-        		
-        			palabrasTotales++;
-        			
+	        		string str;
+	        		
+	        		for( char c : palabra ) if( std::isalpha(c) ) str += c ;
+	        			
+	        		if ( !esNumero(str) ){
+	        				
+	        			arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
+	        		
+	        			palabrasTotales++;
+					}
         			
 				}
         		
@@ -92,7 +105,6 @@ void Articulo::cargarTablaAlfabetica(){
 	}
 	
 	lineasTotales = line;
-    
     crearTablaAlfabetica( arbolPalabras->getRaiz(), true );
     palabrasUnicas = arbolPalabras->palabrasUnicas( arbolPalabras->getRaiz(), 0 );
      
@@ -134,14 +146,17 @@ void Articulo::cargarTablaCapitulos(){
         	while ( iss >> palabra ){
         		
         		if ( pag >= 1 && cap >= 1 ){
-        			
+        				
         			transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
         		
-        			string str;
-        		
-        			for( char c : palabra ) if( std::isalnum(c) ) str += c ;
-  
-        			arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
+	        		string str;
+	        		
+	        		for( char c : palabra ) if( std::isalpha(c) ) str += c ;
+	        			
+	        		if ( !esNumero(str) ){
+							
+							arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
+					}
         			
 				}
         		
@@ -151,9 +166,9 @@ void Articulo::cargarTablaCapitulos(){
 		
 		line++;
 		
-		if ( cap > 1 && flag ){
+		if ( cap >= 1 && flag ){
         		
-        	crearTablaCapitulos( arbolPalabras->getRaiz(), true, cap - 1 );
+        	crearTablaCapitulos( arbolPalabras->getRaiz(), true, cap );
         	arbolPalabras = new ArbolAVL();
         	flag = false;
         		
