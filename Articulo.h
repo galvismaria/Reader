@@ -16,9 +16,9 @@ class Articulo{
 		ArbolAVL *arbolPalabras;
 		Hash *tablaCapitulos;
 		Hash *tablaAlfabetica;
-		int lineasTotales;
 		int capitulosTotales;
 		int paginasTotales;
+		int lineasTotales;
 		int palabrasTotales;
 		int palabrasUnicas;
 		
@@ -42,6 +42,7 @@ class Articulo{
 		bool borrarIndiceCapitulo(int capitulo);
 		void menuPrincipal();
 		void salir();
+		~Articulo();
 	
 };
 

@@ -149,3 +149,10 @@ Palabra& Palabra::operator = (const Palabra &p){
     return *this;
 }
 
+Palabra::~Palabra(){
+	
+	delete & palabra;
+	delete [] paginas;
+	delete [] lineas;
+	
+}

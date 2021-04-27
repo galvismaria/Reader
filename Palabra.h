@@ -29,6 +29,7 @@ class Palabra{
 		bool operator == (Palabra p) const;
 		bool operator != (Palabra p) const;
 		Palabra& operator = (const Palabra &p);
+		~Palabra();
 			
 };
 

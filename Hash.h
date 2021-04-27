@@ -35,6 +35,7 @@ class Hash{
 		void imprimirLineas();
 		void imprimirCapitulo( int capitulo );
 		void mostrarCapitulos();
+		~Hash();
 	
 };
 

@@ -5,9 +5,10 @@ Articulo::Articulo(){
 	arbolPalabras = new ArbolAVL();
 	tablaCapitulos = new Hash();
 	tablaAlfabetica = new Hash();
-	lineasTotales = 0;
 	capitulosTotales = 0;
 	paginasTotales = 0;
+	lineasTotales = 0;
+	palabrasTotales = 0;
 	palabrasUnicas = 0;
 
 }
@@ -209,12 +210,14 @@ void Articulo::cargarTotalDocumento(){
 	
 	system("cls");
 	
+	cout<< "\n\n\t----------- Conteo total  -----------\n\n"<<endl;
+	
     cout << "\tNumero de lineas en total: "<< --lineasTotales << endl;
     cout << "\tNumero de palabras en total: "<< palabrasTotales<< endl;
     cout << "\tNumero de palabras unicas: " << palabrasUnicas << endl;
     cout << "\tNumero de capitulos en total: "<< capitulosTotales << endl;
     cout << "\tNumero de paginas en total: "<< paginasTotales << endl;
-    cout<<endl;
+    cout << "\n\n\t" << endl;
      
 	system("pause");
 }
@@ -341,9 +344,9 @@ void Articulo::busquedaPalabra(){
 		system("cls");
 		cout <<"\n\n\n\t\t";
 		resultado->imprimir();
-		cout <<"\n\n\t\tSe encuentra en las lineas: ";
+		cout <<"\n\n\t\tSe encuentra en las lineas:\n\n";
 		resultado->mostrarLineas();
-		cout <<"\n\t\tSe encuentra en las paginas: ";
+		cout <<"\n\t\tSe encuentra en las paginas:\n\n";
 		resultado->mostrarPaginas();
 		cout <<"\n\t\t";
 		system("pause");
@@ -443,10 +446,9 @@ void Articulo::menuPrincipal(){
 				"\n\n\t\t2. Indice por paginas"<<
 				"\n\n\t\t3. Indice por capitulos" <<
 				"\n\n\t\t4. Buscar palabra" <<
-				"\n\n\t\t5. Eliminar palabra" <<
-				"\n\n\t\t6. Imprimir documento" <<
-				"\n\n\t\t7. Conteo total" <<
-				"\n\n\t\t8. Salir\n\n\n\n";
+				"\n\n\t\t5. Imprimir documento" <<
+				"\n\n\t\t6. Conteo total" <<
+				"\n\n\t\t7. Salir\n\n\n\n";
 				
 		cout << "\t----------------------------------------------------------------------------------------------------" << " \n\n\t\t";
 	
@@ -494,17 +496,17 @@ void Articulo::menuPrincipal(){
 				busquedaPalabra();
 				break;
 					
-			case(6):
+			case(5):
 			
 				mostrarArchivo();
 				break;	
 			
-			case(7):
+			case(6):
 			
 				cargarTotalDocumento();
 				break;
 				
-			case(8):
+			case(7):
 				
 				salir();			
 				
@@ -520,5 +522,18 @@ void Articulo::menuPrincipal(){
 void Articulo::salir(){
 	
 	exit(0);
+	
+}
+
+Articulo::~Articulo(){
+	
+	delete [] arbolPalabras;
+	delete [] tablaCapitulos;
+	delete [] tablaAlfabetica;
+	delete &capitulosTotales;
+	delete &paginasTotales;
+	delete &lineasTotales;
+	delete &palabrasTotales;
+	delete &palabrasUnicas;
 	
 }

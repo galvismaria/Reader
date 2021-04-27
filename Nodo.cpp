@@ -119,3 +119,14 @@ int Nodo::actualizarAltura(){
 	return altura;
 	
 }
+
+Nodo::~Nodo(){
+	
+	delete [] info;
+	delete &capitulo;
+	delete &altura;
+	delete [] der;
+	delete [] izq;
+	delete [] padre;
+	
+}

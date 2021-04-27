@@ -223,3 +223,9 @@ void Hash::mostrarCapitulos(){
 	}
 	
 }
+
+Hash::~Hash(){
+	
+	delete [] tabla;
+	
+}

@@ -30,6 +30,7 @@ class ArbolAVL{
 		int palabrasUnicas(Nodo *nodo, int cont);
 		void imprimirInOrden();
 		int palabrasUnicas( Nodo *nodo);
+		~ArbolAVL();
 	
 };
 

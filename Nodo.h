@@ -30,6 +30,7 @@ class Nodo{
 		Nodo* setIzquierda( Nodo *nuevoIzq );
 		Nodo* setDerecha( Nodo *nuevoDer );
 		int actualizarAltura();
+		~Nodo();
 	
 };
 

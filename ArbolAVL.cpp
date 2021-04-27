@@ -371,3 +371,9 @@ void ArbolAVL::imprimirInOrden(){
 	inOrden( raiz, true );
 	
 }
+
+ArbolAVL::~ArbolAVL(){
+	
+	delete [] raiz;
+	
+}
