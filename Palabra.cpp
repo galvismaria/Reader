@@ -34,7 +34,6 @@ string Palabra::getPalabra(){
 
 void Palabra::imprimir(){
 	
-	
 	if ( palabra != "\0" ){
 		
 		printf( "\033[1;93m%s\033[0m\n", palabra.c_str() );
@@ -110,35 +109,6 @@ bool Palabra::esUnica(){
 		
 		return false;
 		
-}
-
-bool Palabra::operator == (Palabra p) const{
-	
-	if ( palabra == p.getPalabra() )
-		return true;
-		
-	else
-		return false;
-	
-}
-
-bool Palabra::operator != (Palabra p) const{
-	
-	if ( palabra != p.getPalabra() )
-		return true;
-		
-	else
-		return false;
-	
-}
-
-Palabra& Palabra::operator = (const Palabra &p){
-        
-    this->palabra = p.palabra;
-    this->paginas = p.paginas;
-    this->lineas = p.lineas;
-        
-    return *this;
 }
 
 Palabra::~Palabra(){

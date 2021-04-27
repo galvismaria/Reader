@@ -17,9 +17,9 @@ int Hash::hashing( string palabra ){
 
 int Hash::hashing( int capitulo ){
 	
-	if ( capitulo > 0 ){
+	if ( capitulo >= 0 ){
 		
-		return capitulo - 1 ;
+		return capitulo ;
 		
 	}
 	
@@ -193,11 +193,11 @@ void Hash::imprimirLineas(){
 
 void Hash::imprimirCapitulo( int capitulo ){
 	
-	if ( capitulo > 0 ){
+	if ( capitulo >= 0 ){
 		
 		cout << "\n\n\t\tCapitulo " << capitulo << "\n\n";
 		
-		tabla[capitulo - 1]->imprimirPalabras();
+		tabla[capitulo]->imprimirPalabras();
 		
 	}
 	
@@ -209,7 +209,7 @@ void Hash::mostrarCapitulos(){
 		
 		if ( !tabla[i]->listaVacia() ){
 			
-			cout << "\t-> Capitulo " << i+1 << endl;
+			cout << "\t-> Capitulo " << i << endl;
 			
 		}
 

@@ -78,22 +78,18 @@ void Articulo::cargarTablaAlfabetica(){
         } else{
         	
         	while ( iss >> palabra ){
-        		
-        		if ( pag >= 1 && cap >= 1 ){
         				
-        			transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
+        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
         		
-	        		string str;
+	        	string str;
 	        		
-	        		for( char c : palabra ) if( std::isalpha(c) ) str += c ;
+	        	for( char c : palabra ) if( std::isalpha(c) ) str += c ;
 	        			
-	        		if ( !esNumero(str) ){
+	        	if ( !esNumero(str) ){
 	        				
-	        			arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
+	        		arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
 	        		
-	        			palabrasTotales++;
-					}
-        			
+	        		palabrasTotales++;
 				}
         		
 			}
@@ -125,7 +121,7 @@ void Articulo::cargarTablaCapitulos(){
     
     string linea;
     int line = 1, cap = 0, pag = 0;
-    bool flag = false;
+    bool flag = true;
     
     while ( getline (archivo, linea) ) {
         
@@ -144,20 +140,17 @@ void Articulo::cargarTablaCapitulos(){
         } else{
         	
         	while ( iss >> palabra ){
-        		
-        		if ( pag >= 1 && cap >= 1 ){
         				
-        			transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
+        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
         		
-	        		string str;
+	        	string str;
 	        		
-	        		for( char c : palabra ) if( std::isalpha(c) ) str += c ;
+	        	for( char c : palabra ) if( std::isalpha(c) ) str += c ;
 	        			
-	        		if ( !esNumero(str) ){
+	        	if ( !esNumero(str) ){
 							
-							arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
-					}
-        			
+					arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
+					
 				}
         		
 			}
@@ -166,7 +159,7 @@ void Articulo::cargarTablaCapitulos(){
 		
 		line++;
 		
-		if ( cap >= 1 && flag ){
+		if ( cap >= 0 && flag ){
         		
         	crearTablaCapitulos( arbolPalabras->getRaiz(), true, cap );
         	arbolPalabras = new ArbolAVL();
@@ -337,7 +330,26 @@ void Articulo::mostrarCapitulos(){
 	tablaCapitulos->mostrarCapitulos();
 	cout << "\n\tDesplegar indice del capitulo: ";
 	
-	cin >> opcion;
+	bool flag = false;
+	
+	while ( !flag ) {
+			
+		cin >> opcion;
+			
+		if ( (opcion >= 0) && (opcion <= capitulosTotales ) ){
+			
+			flag = true;
+			
+		}
+				
+		else{
+			
+			cout << "\n\n\tError, intente de nuevo.\n\t";
+			cin.clear();
+			cin.ignore(200, '\n');
+				
+		}
+	}
 	
 	indiceCapitulo( opcion );
 	
@@ -491,7 +503,7 @@ void Articulo::menuPrincipal(){
 				
 			else{
 			
-				cout << "Error, intente de nuevo.\n";
+				cout << "\n\n\tError, intente de nuevo.\n\t";
 				cin.clear();
 				cin.ignore(200, '\n');
 				

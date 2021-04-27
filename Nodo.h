@@ -18,7 +18,7 @@ class Nodo{
 	
 	public:
 		
-		Nodo( Palabra *p );
+		Nodo(Palabra *p);
 		int getBalance();
 		Palabra* getInfo();
 		int getAltura();
@@ -26,8 +26,8 @@ class Nodo{
 		Nodo *getIzquierda();
 		Nodo *getPadre();
 		void quitarPadre();
-		Nodo* setIzquierda( Nodo *nuevoIzq );
-		Nodo* setDerecha( Nodo *nuevoDer );
+		Nodo* setIzquierda(Nodo *nuevoIzq);
+		Nodo* setDerecha(Nodo *nuevoDer);
 		int actualizarAltura();
 		~Nodo();
 	

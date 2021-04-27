@@ -178,10 +178,6 @@ void Lista::imprimirPalabras(){
 		
 		}
 		
-	} else{
-		
-		//cout << "Lista vacia" << endl;
-		
 	}
 	
 }
@@ -202,10 +198,6 @@ void Lista::imprimirPaginas(){
 		
 		}
 		
-	} else{
-		
-		//cout << "Lista vacia" << endl;
-		
 	}
 	
 }
@@ -217,7 +209,7 @@ void Lista::imprimirLineas(){
 		primero();
 	
 		while ( actual ){
-		;
+
 			actual->palabra->imprimir();
 			cout << "\n\n";
 			actual->palabra->mostrarLineas();
@@ -225,11 +217,7 @@ void Lista::imprimirLineas(){
 			actual = actual->siguiente;
 		
 		}
-		
-	} else{
-		
-		//cout << "Lista vacia" << endl;
-		
+	
 	}
 	
 }
