@@ -29,11 +29,11 @@ class Lista{
 
     public:
     	
-    	/* ----- M…TODOS ----- */
+    	/* ----- MÔøΩTODOS ----- */
 		
 		/* ----- Constructores ----- */
     	
-        Lista();						// Constructor sin par·metros -> Crea una lista vacÌa
+        Lista();						// Constructor sin par√°metros -> Crea una lista vac√≠a
         
         /* ----- Procedimientos ----- */
         
@@ -45,11 +45,11 @@ class Lista{
         
         int getRepeticiones();
         
-        bool listaVacia();				// Retorna 'true' si la lista est· vacÌa, y 'false' en caso contrario
+        bool listaVacia();				// Retorna 'true' si la lista est√° vac√≠a, y 'false' en caso contrario
         
-        bool haySiguiente();			// Retorna 'true' si el siguiente nodo es v·lido, y 'false' en caso contrario
+        bool haySiguiente();			// Retorna 'true' si el siguiente nodo es v√°lido, y 'false' en caso contrario
         
-        bool hayActual();				// Retorna 'true' si el nodo actual es v·lido, y 'false' en caso contrario
+        bool hayActual();				// Retorna 'true' si el nodo actual es v√°lido, y 'false' en caso contrario
         
         void siguiente();				// Avanza al siguiente nodo de la lista
         
@@ -63,9 +63,8 @@ class Lista{
         
 		void imprimirLineas();
 		
-		Palabra* buscar(string palabra);       		// Busca un nodo seg˙n el dato que se pase como par·metro
-										// Si se trata de una lista de estudiantes recibe una cÈdula como par·metro,
-										// y si se trata de una lista de cursos recibe un ID de materia como par·metro
+		Palabra* buscar(string palabra);       		// Busca un nodo seg√∫n el dato que se pase como par√°metro
+
 										
 		void borrar(string palabra);
 
