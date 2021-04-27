@@ -5,6 +5,10 @@ Articulo::Articulo(){
 	arbolPalabras = new ArbolAVL();
 	tablaCapitulos = new Hash();
 	tablaAlfabetica = new Hash();
+	lineasTotales = 0;
+	capitulosTotales = 0;
+	paginasTotales = 0;
+	palabrasUnicas = 0;
 
 }
 
@@ -28,22 +32,17 @@ int Articulo::extraerNumero( string str ){
     
 }
 
-void Articulo::toLowercase( string str ){
-	
-	
-	
-}
-
 void Articulo::cargarTablaAlfabetica(){
 	
-    //setlocale( LC_ALL, "" );
     string nombreArchivo = "file.txt";
     
     ifstream archivo( nombreArchivo.c_str() );
     
     if (!archivo){
+    	
        cout << "Error: No se consiguio el archivo"<< endl;
        return;
+       
     }
     
     string linea;
@@ -56,13 +55,14 @@ void Articulo::cargarTablaAlfabetica(){
         
         if ( linea.find("capitulo") != std::string::npos ){
         	
+        	capitulosTotales++;
         	cap = extraerNumero(linea);
-            //cout << "Capitulo: "<< cap << endl;
 
         } else if (linea.find("pagina") != std::string::npos){
 			
+			paginasTotales++;
             pag = extraerNumero(linea);
-            //cout << "Pagina: "<< pag << endl;
+
         } else{
         	
         	while ( iss >> palabra ){
@@ -75,6 +75,8 @@ void Articulo::cargarTablaAlfabetica(){
   
         		arbolPalabras->insertarNodo( new Palabra (str, line, pag + 1 ), line, pag + 1 );
         		
+        		palabrasTotales++;
+        		
 			}
         	
 		}
@@ -82,6 +84,8 @@ void Articulo::cargarTablaAlfabetica(){
         line++;
         
 	}
+	
+	lineasTotales = line;
     
     crearTablaAlfabetica( arbolPalabras->getRaiz(), true );
     palabrasUnicas = arbolPalabras->palabrasUnicas( arbolPalabras->getRaiz(), 0 );
@@ -90,14 +94,15 @@ void Articulo::cargarTablaAlfabetica(){
 
 void Articulo::cargarTablaCapitulos(){
 	
-    setlocale( LC_ALL, "" );
     string nombreArchivo = "file.txt";
     
     ifstream archivo( nombreArchivo.c_str() );
     
     if (!archivo){
+    	
        cout << "Error: No se consiguio el archivo"<< endl;
        return;
+       
     }
     
     string linea;
@@ -153,24 +158,46 @@ void Articulo::cargarTablaCapitulos(){
 void Articulo::mostrarArchivo(){
 	
 	system("cls");
+	
 	setlocale(LC_ALL, "");
+	
     string nombreArchivo = "file.txt";
+    
     ifstream archivo(nombreArchivo.c_str());
-     if (!archivo){
+    
+    if (!archivo){
+     	
        cout << "No se consiguio el archivo "<< endl;
+       
     }
+    
     string linea;
-    cout<< "\t----------------------------Contenido del archivo.----------------------\n\n"<<endl;
+    int cap, pag;
+    
+    cout<< "\t----------------------------------- Contenido del archivo -----------------------------------\n\n"<<endl;
 	
 	int i = 1, x;
-	while (getline(archivo, linea))	{
+	
+	while ( getline(archivo, linea) )	{
 		
-	if(linea.find("capitulo") != std::string::npos){
+		if ( linea.find( "capitulo" ) != string::npos ){
 			
-      printf( " \t\n\n----------------------------------------Inicio del \033[1;93m%s\033[0m", linea.c_str()); cout<<"-----------------------------------\n\n";
-         cout<<endl;
-        }
-        
+			cap = extraerNumero(linea);
+			
+			getline(archivo, linea);
+			
+			if ( linea.find( "pagina" ) != string::npos ){
+				
+				pag = extraerNumero(linea);
+				
+			}
+				
+	      	printf( " \t\n\n-----------------------------------\033[1;93mInicio del capitulo %d - desde la pagina %d\033[0m", cap, pag );
+			cout << "-----------------------------------\n\n" << endl;
+			
+			getline(archivo, linea);
+	    }
+	        
 		cout << linea << endl;
 		
 	}
@@ -181,45 +208,12 @@ void Articulo::mostrarArchivo(){
 void Articulo::cargarTotalDocumento(){
 	
 	system("cls");
-    string nombreArchivo = "file.txt";
-    ifstream archivo(nombreArchivo.c_str());
-     if (!archivo){
-       cout << "No se consiguio el archivo "<< endl;
-    }
-    
-    string linea;
-    int Line = 1, capitulos = 0, Pag = 0, totalPalabras = 0;
-    string palabra;
 	
-	cout<<endl;
-	cout<<endl;
-    cout<< "\t----------------------------Contenido total.----------------------\n\n"<<endl;
-    while (getline(archivo, linea)) {
-        istringstream iss(linea);
-      
-        if (linea.find("capitulo") != std::string::npos){
-            capitulos++;
-        }
-        if (linea.find("pagina") != std::string::npos){
-                Pag++;
-        }
-        
-        while ( iss >> palabra ){
-        		
-        		if(iss){
-        			totalPalabras++;
-				}
-
-			}
-			
-		 Line++ ;	
-    }
-    
-    cout << "\tNumero de lineas en total: "<< --Line << endl;
-    cout << "\tNumero de palabras en total: "<< totalPalabras<< endl;
+    cout << "\tNumero de lineas en total: "<< --lineasTotales << endl;
+    cout << "\tNumero de palabras en total: "<< palabrasTotales<< endl;
     cout << "\tNumero de palabras unicas: " << palabrasUnicas << endl;
-    cout << "\tNumero de capitulos en total: "<< capitulos << endl;
-    cout << "\tNumero de paginas en total: "<< Pag << endl;
+    cout << "\tNumero de capitulos en total: "<< capitulosTotales << endl;
+    cout << "\tNumero de paginas en total: "<< paginasTotales << endl;
     cout<<endl;
      
 	system("pause");

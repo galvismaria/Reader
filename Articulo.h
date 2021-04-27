@@ -19,15 +19,16 @@ class Articulo{
 		int lineasTotales;
 		int capitulosTotales;
 		int paginasTotales;
+		int palabrasTotales;
+		int palabrasUnicas;
 		
 	public:
 		
 		Articulo();
 		int extraerNumero(string str);
-		void toLowercase(string str);
 		void cargarTablaCapitulos();
 		void cargarTablaAlfabetica();
-		void cargarArchivo();
+		void mostrarArchivo();
 		void cargarTotalDocumento();
 		void insertarPalabra(string palabra, int linea, int pagina);
 		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);
