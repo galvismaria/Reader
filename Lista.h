@@ -15,7 +15,7 @@ class Lista{
     		
     		public:
     			
-    			Palabra *palabra;					// Dato que se almacena en la lista
+    			Palabra *palabra;		// Dato que se almacena en la lista
     			Nodo *siguiente;		// Apuntador al siguiente elemento
     			
     			Nodo();
@@ -37,15 +37,19 @@ class Lista{
         
         /* ----- Procedimientos ----- */
         
-        void insertarNodo(Palabra *pb);			// Inserta un elemento en la lista
+        void insertarNodo(Palabra *pb);		// Inserta un elemento en la lista
         
         Palabra* valorActual();				// Retorna el elemento almacenado en el nodo actual de la lista
         
         int cantElementos();			// Devuelve la cantidad de elementos guardados en la lista
         
+<<<<<<< HEAD
         int getRepeticiones();
         
         bool listaVacia();				// Retorna 'true' si la lista est√° vac√≠a, y 'false' en caso contrario
+=======
+        bool listaVacia();				// Retorna 'true' si la lista est· vacÌa, y 'false' en caso contrario
+>>>>>>> 70c18445d6046bf2b92e557aef159853d1e917d1
         
         bool haySiguiente();			// Retorna 'true' si el siguiente nodo es v√°lido, y 'false' en caso contrario
         

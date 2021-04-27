@@ -27,6 +27,7 @@ class Articulo{
 	public:
 		  /* ----- MÉTODOS ----- */
 		
+<<<<<<< HEAD
 		  /* ----- Constructores ----- */
 		Articulo();                    //Constructor sin parámetros.
 
@@ -73,6 +74,26 @@ class Articulo{
 
  
 		/* ----- Destructor ----- */
+=======
+		Articulo();
+		int extraerNumero(string str);
+		bool esNumero(string str);
+		void cargarTablaCapitulos();
+		void cargarTablaAlfabetica();
+		void mostrarArchivo();
+		void insertarPalabra(string palabra, int linea, int pagina);
+		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);
+		void crearTablaCapitulos(Nodo *nodo, bool esRaiz, int capitulo);
+		void indiceLineas();
+		void indicePaginas();
+		void indiceCapitulo(int capitulo);
+		void mostrarCapitulos();
+		void busquedaPalabra();
+		bool borrarIndiceAlfabetico();
+		bool borrarIndiceCapitulo(int capitulo);
+		void menuPrincipal();
+		void salir();
+>>>>>>> 70c18445d6046bf2b92e557aef159853d1e917d1
 		~Articulo();
 	
 };

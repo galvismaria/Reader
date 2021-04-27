@@ -1,11 +1,13 @@
 #include "Lista.h"
 
+
 Lista::Nodo::Nodo(){
 	
 	palabra = new Palabra();
 	siguiente = NULL;
 	
 }
+
 
 Lista::Nodo::Nodo( Palabra *p, Nodo *sig ){
 	
