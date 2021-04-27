@@ -29,7 +29,6 @@ class ArbolAVL{
 		void inOrden(Nodo *nodo, bool esRaiz = true);
 		int palabrasUnicas(Nodo *nodo, int cont);
 		void imprimirInOrden();
-		int palabrasUnicas( Nodo *nodo);
 		~ArbolAVL();
 	
 };

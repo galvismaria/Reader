@@ -43,8 +43,6 @@ class Lista{
         
         int cantElementos();			// Devuelve la cantidad de elementos guardados en la lista
         
-        int getRepeticiones();
-        
         bool listaVacia();				// Retorna 'true' si la lista está vacía, y 'false' en caso contrario
         
         bool haySiguiente();			// Retorna 'true' si el siguiente nodo es válido, y 'false' en caso contrario
