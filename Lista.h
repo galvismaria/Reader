@@ -15,7 +15,7 @@ class Lista{
     		
     		public:
     			
-    			Palabra *palabra;					// Dato que se almacena en la lista
+    			Palabra *palabra;		// Dato que se almacena en la lista
     			Nodo *siguiente;		// Apuntador al siguiente elemento
     			
     			Nodo();
@@ -37,7 +37,7 @@ class Lista{
         
         /* ----- Procedimientos ----- */
         
-        void insertarNodo(Palabra *pb);			// Inserta un elemento en la lista
+        void insertarNodo(Palabra *pb);		// Inserta un elemento en la lista
         
         Palabra* valorActual();				// Retorna el elemento almacenado en el nodo actual de la lista
         

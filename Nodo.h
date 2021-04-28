@@ -57,7 +57,9 @@ class Nodo{
 		
 		void quitarPadre();					// Quita el nodo padre del nodo actual
 		
-		~Nodo();
+		/* ----- Destructor ----- */
+		
+		~Nodo();							// Destructor
 	
 };
 
