@@ -507,8 +507,21 @@ void ArbolAVL::imprimirInOrden(){
 	
 }
 
+void ArbolAVL::podar( Nodo* n ){
+	
+	if ( n ){
+		
+		podar( n->getIzquierda() );
+		podar( n->getDerecha() );
+		
+		delete n;
+		
+		n = nullptr;
+	}
+}
+
 ArbolAVL::~ArbolAVL(){
 	
-	delete [] raiz;
+	podar( raiz );
 	
 }

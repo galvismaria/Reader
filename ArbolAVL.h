@@ -58,7 +58,7 @@ class ArbolAVL{
 		
 		/* ----- Getters ----- */
 		
-		Nodo *getRaiz(); 
+		Nodo* getRaiz(); 
 		int getAltura();
 		
 		/* ----- Procedimientos ----- */
@@ -70,11 +70,13 @@ class ArbolAVL{
 		bool quitarNodo(string palabra);						// Función de eliminación. Quita el nodo correspondiente a la palabra que se pasa como parámetro
 																// y realiza un rebalanceo del árbol.
 																
-		void inOrden(Nodo *nodo, bool esRaiz = true);			// Función que realiza el recorrido inorden del árbol
+		void inOrden(Nodo* nodo, bool esRaiz = true);			// Función que realiza el recorrido inorden del árbol
 		
-		int palabrasUnicas(Nodo *nodo, int cont);				// Función que cuenta cuántas palabras únicas existen en el árbol
+		int palabrasUnicas(Nodo* nodo, int cont);				// Función que cuenta cuántas palabras únicas existen en el árbol
 		
 		void imprimirInOrden();									// Función que imprime in orden las palabras almacenadas en el árbol
+		
+		void podar(Nodo* n);									// Función recursiva para podar el árbol
 		
 		/* ----- Destructor ----- */
 		

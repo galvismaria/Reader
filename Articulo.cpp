@@ -223,7 +223,7 @@ void Articulo::mostrarArchivo(){
 	system ("pause");
 }
 
-void Articulo::cargarTotalDocumento(){
+void Articulo::conteoTotal(){
 	
 	system("cls");
 	
@@ -539,7 +539,7 @@ void Articulo::menuPrincipal(){
 			
 			case(6):
 			
-				cargarTotalDocumento();
+				conteoTotal();
 				break;
 				
 			case(7):
