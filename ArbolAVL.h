@@ -22,7 +22,7 @@ class ArbolAVL{
 		
 		/* ----- ATRIBUTOS ----- */
 		
-		Nodo *raiz;									// Apuntador a la raíz del árbol
+		Nodo *raiz;												// Apuntador a la raíz del árbol
 		
 		/* ----- MÉTODOS PRIVADOS ----- */
 		
