@@ -1,6 +1,5 @@
 #include "Nodo.h"
 
-// Constructor - Incialización de los atributos
 
 Nodo::Nodo( Palabra *p ){
 	
