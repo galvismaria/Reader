@@ -1,5 +1,5 @@
 #include "Articulo.h"
-
+  /* ---------------- Inicializador de los atributos de la clase Articulo----------------------*/
 Articulo::Articulo(){
 
 	arbolPalabras = new ArbolAVL();
@@ -12,7 +12,8 @@ Articulo::Articulo(){
 	palabrasUnicas = 0;
 
 }
-
+ 
+ /*------------------------------Extraer el número de un string---------------------------------*/ 
 int Articulo::extraerNumero( string str ){
 	
     stringstream ss;    
@@ -33,17 +34,20 @@ int Articulo::extraerNumero( string str ){
     
 }
 
+/*------------------------------Verificar si el stirng es un número-------------------------------*/ 
 bool Articulo::esNumero( string str ){
 	
     for (int i = 0; i < str.length(); i++)
-    
-        if ( isdigit ( str[i] ) == false)
-            return false;
+
+        //Verifica si el string ingresado es una palabra o un número.
+        if ( isdigit ( str[i] ) == false) 
+            return false;    //En caso de que no sea un número.
  
-    return true;
+    return true;   //En caso de que sea un número.
 	
 }
 
+/*------------------------------Cargar la tabla hash alfabética------------------------------------*/ 
 void Articulo::cargarTablaAlfabetica(){
 	
     string nombreArchivo = "file.txt";
@@ -64,48 +68,51 @@ void Articulo::cargarTablaAlfabetica(){
         
         istringstream iss(linea);
         string palabra;
-        
+        //Busca los capítulos del archivo
         if ( linea.find("capitulo") != std::string::npos ){
         	
-        	capitulosTotales++;
-        	cap = extraerNumero(linea);
-
+        	capitulosTotales++;          //Almacena la cantidad de capitulos que contiene el archivo.
+        	cap = extraerNumero(linea);  //Extrae el número del capítulo.
+		//Busca las páginas del archivo
         } else if (linea.find("pagina") != std::string::npos){
 			
-			paginasTotales++;
-            pag = extraerNumero(linea);
+			paginasTotales++;            //Almacena la cantidad de páginas que contiene el archivo.
+            pag = extraerNumero(linea);  //Extrae el número de la página.
 
         } else{
         	
-        	while ( iss >> palabra ){
-        				
-        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
+        	while ( iss >> palabra ){  
+        			/*Extrae las palsbras mayúsculas del archivo y las convierte en minúsculas */
+        		transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower); 
         		
 	        	string str;
 	        		
+				/* Verifica si la palabra tiene asociada un valor alfanumérico. */
 	        	for( char c : palabra ) if( std::isalpha(c) ) str += c ;
 	        			
 	        	if ( !esNumero(str) ){
-	        				
+	        		/*Inserta las palabras en el árbol.*/
 	        		arbolPalabras->insertarNodo( new Palabra (str, line, pag ), line, pag );
 	        		
-	        		palabrasTotales++;
+	        		palabrasTotales++; //Almacena la cantidad de palbras que contiene el archivo.
 				}
         		
 			}
         	
 		}
         	
-        line++;
+        line++; 
         
 	}
-	
-	lineasTotales = line;
+
+	//Almacena la cantidad de páginas que contiene el archivo.
+	lineasTotales = line; 
     crearTablaAlfabetica( arbolPalabras->getRaiz(), true );
     palabrasUnicas = arbolPalabras->palabrasUnicas( arbolPalabras->getRaiz(), 0 );
      
 };
 
+/*------------------------------Cargar la tabla hash de capítulos---------------------------------*/ 
 void Articulo::cargarTablaCapitulos(){
 	
     string nombreArchivo = "file.txt";
@@ -173,6 +180,7 @@ void Articulo::cargarTablaCapitulos(){
 
 }
 
+/*--------------------------Imprime el contenido del archivo -------------------------------------------*/
 void Articulo::mostrarArchivo(){
 	
 	system("cls");
@@ -202,7 +210,7 @@ void Articulo::mostrarArchivo(){
 			
 			cap = extraerNumero(linea);
 			
-			getline(archivo, linea);
+			getline(archivo, linea); 
 			
 			if ( linea.find( "pagina" ) != string::npos ){
 				
@@ -239,12 +247,14 @@ void Articulo::conteoTotal(){
 	system("pause");
 }
 
+/*----------------------------Inserta las palabras en el árbol-------------------------------*/
 void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 	
 	arbolPalabras->insertarNodo( new Palabra (palabra, linea, pagina), linea, pagina );
 	
 }
 
+/*------------------------------Crea la tabla hash alfabética---------------------------------*/ 
 void Articulo::crearTablaAlfabetica( Nodo *nodo, bool esRaiz ){
 	
 	if ( esRaiz )
@@ -261,6 +271,7 @@ void Articulo::crearTablaAlfabetica( Nodo *nodo, bool esRaiz ){
 	
 }
 
+/*------------------------------Crea la tabla hash de capítulos---------------------------------*/
 void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
 	
 	if ( esRaiz )
@@ -277,6 +288,7 @@ void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
 	
 }
 
+/*--------------------------------Imprime el índice de las palabras-------------------------------*/
 void Articulo::indiceLineas(){
 	
 	bool flag = true;
@@ -290,7 +302,8 @@ void Articulo::indiceLineas(){
 	}
 	
 }
-
+ 
+/*----------------------------------Imprime el índice de las páginas--------------------------------*/ 
 void Articulo::indicePaginas(){
 	
 	bool flag = true;
@@ -305,7 +318,7 @@ void Articulo::indicePaginas(){
 	}
 	
 }
-
+/*---------------------------Imprime el índice de los capítulos------------------------------*/ 
 void Articulo::indiceCapitulo( int capitulo ){
 	
 	bool flag = true;
@@ -321,6 +334,7 @@ void Articulo::indiceCapitulo( int capitulo ){
 	
 }
 
+/*------------------------------Imprime los capítulos--------------------------------------------*/ 
 void Articulo::mostrarCapitulos(){
 	
 	int opcion;
@@ -355,6 +369,7 @@ void Articulo::mostrarCapitulos(){
 	
 }
 
+/*------------------------------Busca una palabra en la tabla hash alfabética -----------------------*/ 
 void Articulo::busquedaPalabra(){
 	
 	string palabra;
@@ -391,6 +406,7 @@ void Articulo::busquedaPalabra(){
 
 }
 
+/*----------------------------Elimina una palabra en la tabla hash alfabética --------------------*/
 bool Articulo::borrarIndiceAlfabetico(){
 	
 	string palabra;
@@ -400,7 +416,7 @@ bool Articulo::borrarIndiceAlfabetico(){
 	
 	cin >> palabra;
 	
-	if ( palabra == "s" ){
+	if ( palabra == "s" || palabra == "S" ){
 		
 		return false;
 		
@@ -427,6 +443,7 @@ bool Articulo::borrarIndiceAlfabetico(){
 		
 }
 
+/*----------------------------Elimina una palabra en la tabla hash de capitulos --------------------*/
 bool Articulo::borrarIndiceCapitulo( int capitulo ){
 	
 	string palabra;
@@ -436,7 +453,7 @@ bool Articulo::borrarIndiceCapitulo( int capitulo ){
 	
 	cin >> palabra;
 	
-	if ( palabra == "s" ){
+	if ( palabra == "s" || palabra == "S"){
 		
 		return false;
 		
@@ -463,6 +480,7 @@ bool Articulo::borrarIndiceCapitulo( int capitulo ){
 		
 }
 
+/*------------------------------------Imprime el Menú principal--------------------------------------*/ 
 void Articulo::menuPrincipal(){
 	
 	cargarTablaAlfabetica();
@@ -495,7 +513,7 @@ void Articulo::menuPrincipal(){
 			
 			cin >> opcion;
 			
-			if ( (opcion >= 1) && (opcion <= 8) ){
+			if ( (opcion >= 1) && (opcion <= 7) ){  
 			
 				flag = true;
 			
@@ -555,12 +573,13 @@ void Articulo::menuPrincipal(){
 		
 }
 
+/*--------------------------------------Salir del programa-----------------------------------------*/
 void Articulo::salir(){
 	
 	exit(0);
 	
 }
-
+ /*---------------------------------------Destructor de la clase------------------------------------*/
 Articulo::~Articulo(){
 	
 	delete [] arbolPalabras;
