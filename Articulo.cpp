@@ -1,5 +1,7 @@
 #include "Articulo.h"
+
   /* ---------------- Inicializador de los atributos de la clase Articulo----------------------*/
+  
 Articulo::Articulo(){
 
 	arbolPalabras = new ArbolAVL();
@@ -14,6 +16,7 @@ Articulo::Articulo(){
 }
  
  /*------------------------------Extraer el número de un string---------------------------------*/ 
+ 
 int Articulo::extraerNumero( string str ){
 	
     stringstream ss;    
@@ -35,6 +38,7 @@ int Articulo::extraerNumero( string str ){
 }
 
 /*------------------------------Verificar si el stirng es un número-------------------------------*/ 
+
 bool Articulo::esNumero( string str ){
 	
     for (int i = 0; i < str.length(); i++)
@@ -47,7 +51,8 @@ bool Articulo::esNumero( string str ){
 	
 }
 
-/*------------------------------Cargar la tabla hash alfabética------------------------------------*/ 
+/*------------------------------Cargar la tabla hash alfabética------------------------------------*/
+ 
 void Articulo::cargarTablaAlfabetica(){
 	
     string nombreArchivo = "file.txt";
@@ -113,6 +118,7 @@ void Articulo::cargarTablaAlfabetica(){
 };
 
 /*------------------------------Cargar la tabla hash de capítulos---------------------------------*/ 
+
 void Articulo::cargarTablaCapitulos(){
 	
     string nombreArchivo = "file.txt";
@@ -181,6 +187,7 @@ void Articulo::cargarTablaCapitulos(){
 }
 
 /*--------------------------Imprime el contenido del archivo -------------------------------------------*/
+
 void Articulo::mostrarArchivo(){
 	
 	system("cls");
@@ -248,6 +255,7 @@ void Articulo::conteoTotal(){
 }
 
 /*----------------------------Inserta las palabras en el árbol-------------------------------*/
+
 void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 	
 	arbolPalabras->insertarNodo( new Palabra (palabra, linea, pagina), linea, pagina );
@@ -255,6 +263,8 @@ void Articulo::insertarPalabra( string palabra, int linea, int pagina ){
 }
 
 /*------------------------------Crea la tabla hash alfabética---------------------------------*/ 
+
+
 void Articulo::crearTablaAlfabetica( Nodo *nodo, bool esRaiz ){
 	
 	if ( esRaiz )
@@ -272,6 +282,7 @@ void Articulo::crearTablaAlfabetica( Nodo *nodo, bool esRaiz ){
 }
 
 /*------------------------------Crea la tabla hash de capítulos---------------------------------*/
+
 void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
 	
 	if ( esRaiz )
@@ -289,6 +300,7 @@ void Articulo::crearTablaCapitulos( Nodo *nodo, bool esRaiz, int capitulo ){
 }
 
 /*--------------------------------Imprime el índice de las palabras-------------------------------*/
+
 void Articulo::indiceLineas(){
 	
 	bool flag = true;
@@ -303,7 +315,8 @@ void Articulo::indiceLineas(){
 	
 }
  
-/*----------------------------------Imprime el índice de las páginas--------------------------------*/ 
+/*----------------------------------Imprime el índice de las páginas--------------------------------*/
+ 
 void Articulo::indicePaginas(){
 	
 	bool flag = true;
@@ -319,6 +332,7 @@ void Articulo::indicePaginas(){
 	
 }
 /*---------------------------Imprime el índice de los capítulos------------------------------*/ 
+
 void Articulo::indiceCapitulo( int capitulo ){
 	
 	bool flag = true;
@@ -335,6 +349,7 @@ void Articulo::indiceCapitulo( int capitulo ){
 }
 
 /*------------------------------Imprime los capítulos--------------------------------------------*/ 
+
 void Articulo::mostrarCapitulos(){
 	
 	int opcion;
@@ -369,7 +384,8 @@ void Articulo::mostrarCapitulos(){
 	
 }
 
-/*------------------------------Busca una palabra en la tabla hash alfabética -----------------------*/ 
+/*------------------------------Busca una palabra en la tabla hash alfabética -----------------------*/
+ 
 void Articulo::busquedaPalabra(){
 	
 	string palabra;
@@ -379,6 +395,8 @@ void Articulo::busquedaPalabra(){
 	cout << "\n\n\tInserte palabra a buscar: ";
 	
 	cin >> palabra;
+	
+	transform (palabra.begin(), palabra.end(), palabra.begin(), ::tolower);
 	
 	resultado = tablaAlfabetica->buscarPalabra(palabra);
 	
@@ -407,6 +425,7 @@ void Articulo::busquedaPalabra(){
 }
 
 /*----------------------------Elimina una palabra en la tabla hash alfabética --------------------*/
+
 bool Articulo::borrarIndiceAlfabetico(){
 	
 	string palabra;
@@ -444,6 +463,7 @@ bool Articulo::borrarIndiceAlfabetico(){
 }
 
 /*----------------------------Elimina una palabra en la tabla hash de capitulos --------------------*/
+
 bool Articulo::borrarIndiceCapitulo( int capitulo ){
 	
 	string palabra;
@@ -481,6 +501,7 @@ bool Articulo::borrarIndiceCapitulo( int capitulo ){
 }
 
 /*------------------------------------Imprime el Menú principal--------------------------------------*/ 
+
 void Articulo::menuPrincipal(){
 	
 	cargarTablaAlfabetica();

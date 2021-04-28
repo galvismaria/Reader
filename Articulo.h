@@ -7,73 +7,79 @@
 
 using namespace std;
 
+/*
+
+	Clase donde se realiza el procesamiento del artícul de texto,
+	se genera el árbol de palabras y se crean las tablas hash.
+
+*/
 
 class Articulo{
 	
 
 	private:
+		
 		/* ----- ATRIBUTOS ----- */
 
-		ArbolAVL *arbolPalabras;        //Arbol donde se almacenan las palabras.
-		Hash *tablaCapitulos;    //Tabla hash para asociar la clave con el nÃºmero de capitulos del archivo. 
-		Hash *tablaAlfabetica;   //Tabla hash para asociar la clave con las palabras por orden alfabÃ©tico del archivo.
+		ArbolAVL *arbolPalabras;        	// Arbol donde se almacenan las palabras.
+		Hash *tablaCapitulos;   			// Tabla hash con casillas que representan los capítulos del archivo.
+		Hash *tablaAlfabetica;   			// Tabla hash con casillas que representan las letras del alfabeto.
 
-		int lineasTotales;              // Cantidad de lÃ­neas que el archivo tiene en total.
-		int capitulosTotales;           // Cantidad de capÃ­tulos que el archivo tiene en total.
-		int paginasTotales;             // Cantidad de pÃ¡ginas que el archivo tiene en total.
-		int palabrasTotales;            // Cantidad de palabras que el archivo tiene en total.
-		int palabrasUnicas;             // Cantidad de palabras Ãºnicas que tiene el archivo.
+		int lineasTotales;              	// Cantidad de líneas que el archivo tiene en total.
+		int capitulosTotales;           	// Cantidad de capítulos que el archivo tiene en total.
+		int paginasTotales;             	// Cantidad de páinas que el archivo tiene en total.
+		int palabrasTotales;            	// Cantidad de palabras que el archivo tiene en total.
+		int palabrasUnicas;             	// Cantidad de palabras úicas que tiene el archivo.
 		
 	public:
-		  /* ----- MÃ‰TODOS ----- */
 		
-		  /* ----- Constructores ----- */
-		Articulo();                    //Constructor sin parÃ¡metros.
+		/* ----- MÉTODOS ----- */
+		
+		/* ----- Constructores ----- */
+		  
+		Articulo();                    										// Constructor sin parámetros.
 
-		  /* ----- Procedimientos ----- */
+		/* ----- Procedimientos ----- */
 
-		int extraerNumero(string str);   // Retornar el valor numÃ©rico que se encuentra en un string.
+		int extraerNumero(string str);   									// Retorna los números que se encuentran en un string
 
-		bool esNumero(string str);		 // Retornar 'true' si el string recibido es un valor numÃ©rico, y 'false' en caso contrario
+		bool esNumero(string str);		 									// Retornar 'true' si el string recibido es un número, y 'false' en caso contrario
 
-		void cargarTablaCapitulos();     //Llena de Ã¡rbol de palabras y carga las palabras en la tabla hash capÃ­tulos.
+		void cargarTablaCapitulos();     									// Llena el árbol de palabras y carga las palabras en la tabla hash de capíulos.
 
-		void cargarTablaAlfabetica();    //Llena de Ã¡rbol de palabras y carga las palabras en la tabla hash alfabÃ©tica.
+		void cargarTablaAlfabetica();   									// Llena el árbool de palabras y carga las palabras en la tabla hash alfabética.
 
-		void mostrarArchivo();           //Imprime el contenido del archivo.
+		void mostrarArchivo();           									// Imprime el contenido del archivo.
 
-		void cargarTotalDocumento();     //Imprime las palabras, las lÃ­neas, los capÃ­tulos y pÃ¡ginas en total que tiene el archivo.
+		void conteoTotal();     											// Imprime el conteo total de capítulos, páginas, líneas y palabras que tiene el archivo
 
-		//Inserta las palbras en el Ã¡rbol.
-		void insertarPalabra(string palabra, int linea, int pagina); 
+		void insertarPalabra(string palabra, int linea, int pagina); 		// Inserta una palabra en el árbol de palabras
+	
+		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);  				// Inserta cada una de las palabras en la tabla hash alfabética.        
 
-		//Inserta cada una de las palabras en la tabla hash alfabÃ©tica.
-		void crearTablaAlfabetica(Nodo *nodo, bool esRaiz);          
+		void crearTablaCapitulos(Nodo *nodo, bool esRaiz, int capitulo);	// Inserta cada una de las palabras en la tabla hash de capítulos.
 
-		//Inserta cada una de las palabras en la tabla hash de capÃ­tulos.
-		void crearTablaCapitulos(Nodo *nodo, bool esRaiz, int capitulo);  
+		void indiceLineas();                								// Imprime el índice de palabras, mostrando en qué líneas aparece cada palabra.
 
-		void indiceLineas();                 //Imprime el Ã­ndice de palabras, mostrando en quÃ© lÃ­neas aparece cada palabra.
+		void indicePaginas();                								// Imprime el índice de palabras, mostrando en qué páginas aparece cada palabra
 
-		void indicePaginas();                //Imprime el Ã­ndice de palabras, mostrando en quÃ© pÃ¡ginas aparece cada palabra
+		void indiceCapitulo(int capitulo);   								// Imprime las palabras que aparecen en un capítulo específico.
 
-		void indiceCapitulo(int capitulo);   // Imprime las palabras que aparece en un capÃ­tulo.
+		void mostrarCapitulos();             								// Imprime la lista de capítulos del artículo.
 
-		void mostrarCapitulos();             // Imprime la lista de capÃ­tulos del artÃ­culo.
+		void busquedaPalabra();             								// Imprime las líneas y los capítulos donde aparece la palabra que se desea buscar.
 
-		void busquedaPalabra();             // Imprime las lÃ­neas y los capÃ­tulos donde aparece la palabra que se desea buscar.
+		bool borrarIndiceAlfabetico();            							// Elimina una palabra de la tabla hash alfabético.
 
-		bool borrarIndiceAlfabetico();            //Elimina una palabra de la tabla hash alfabÃ©tico.
+		bool borrarIndiceCapitulo(int capitulo);  							// Elimina una palabra de la tabla hash de capítulos.
 
-		bool borrarIndiceCapitulo(int capitulo);  //Elimina una palabra de la tabla hash de capÃ­tulos.
+		void menuPrincipal();                     							// Imprime el menú principal del programa.
 
-		void menuPrincipal();                     //Imprime el menÃº principal del programa.
+		void salir();                             							// Finaliza la ejecución del programa.
 
-		void salir();                             //Finaliza la ejecuciÃ³n del programa.
-
- 
 		/* ----- Destructor ----- */
-		~Articulo();
+		
+		~Articulo();														// Destructor de la clase
 	
 };
 
